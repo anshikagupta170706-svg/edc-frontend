@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import TeamCard from '../components/TeamCard';
 import Footer from '../components/Footer';
 
 const Team = () => {
+  const location = useLocation();
   const [activeFilter, setActiveFilter] = useState('All');
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const filter = searchParams.get('filter');
+    if (filter) {
+      setActiveFilter(filter);
+    }
+  }, [location.search]);
 
   // Faculty coordinators data
   const facultyCoordinators = [

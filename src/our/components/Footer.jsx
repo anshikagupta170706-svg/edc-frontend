@@ -38,7 +38,7 @@ const Footer = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-[#05B1DE] to-[#04a0c7] rounded-xl flex items-center justify-center">
                   <FaRocket className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#05B1DE]">EDC JSS</h3>
+                <h3 className="text-3xl font-bold text-[#05B1DE]">EDC JSSUN</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-6 max-w-md">
                 Building startups, leaders, communities, and innovations at JSS
@@ -176,7 +176,7 @@ const Footer = () => {
           <div className="text-center">
             <p className="text-gray-600 dark:text-gray-400 text-sm">
               Designed and developed by{' '}
-              <span className="font-semibold text-[#05B1DE]">Team EDC</span>
+              <span className="font-semibold text-[#05B1DE]">Team EDC JSSUN</span>
             </p>
           </div>
         </div>
