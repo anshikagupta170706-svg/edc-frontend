@@ -77,11 +77,11 @@ const Main = () => {
               </p>
               <FlipWords
                 words={[
-                  'Startrups',
+                  'Startups',
                   'Leaders',
                   'Communities',
                   'Networks',
-                  'Inovations',
+                  'Innovations',
                 ]}
                 duration={3000}
                 className="text-[#05B1DE] dark:text-[#05B1DE] text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold"
