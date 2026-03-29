@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './our/components/navbar/Navbar';
+import BottomNavbar from './our/components/navbar/BottomNavbar';
 import Team from './our/views/Team';
 import Main from './our/views/Main';
 import Events from './our/views/Events';
@@ -16,7 +17,7 @@ function App() {
       <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 md:w-[80%] w-full p-4">
         <Navbar />
       </div>
-      <div className="">
+      <div className="pb-20 md:pb-0">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/team" element={<Team />} />
@@ -26,8 +27,10 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
+      <BottomNavbar />
     </Router>
   );
 }
 
 export default App;
+

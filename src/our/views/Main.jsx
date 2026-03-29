@@ -56,7 +56,7 @@ const Main = () => {
   return (
     <div>
       {/* Spotlight Section */}
-      <div className="relative flex min-h-[70vh] sm:min-h-[85vh] md:min-h-screen w-full overflow-hidden rounded-md bg-white dark:bg-black antialiased items-center justify-center px-2 sm:px-4">
+      <div className="relative flex min-h-screen sm:min-h-[85vh] md:min-h-screen w-full overflow-hidden rounded-md bg-white dark:bg-black antialiased items-center justify-center px-4 sm:px-6">
         <div
           className={cn(
             'pointer-events-none absolute inset-0 [background-size:20px_20px] sm:[background-size:30px_30px] md:[background-size:40px_40px] select-none',
@@ -66,13 +66,13 @@ const Main = () => {
         />
 
         <Spotlight
-          className="-top-20 left-1/2 -translate-x-1/2 sm:-top-30 sm:left-1/2 sm:-translate-x-1/2 md:-top-20 md:left-1/2 md:-translate-x-1/2"
+          className="top-0 left-1/2 -translate-x-1/2 md:-top-20 md:left-1/2 md:-translate-x-1/2"
           fill="#05B1DE"
         />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-2 sm:px-4 py-6 sm:py-8 md:py-12 lg:py-16">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 sm:py-16 md:py-20">
           <div className="text-center">
-            <div className="flex flex-row items-center justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
-              <p className="text-gray-800 dark:text-neutral-400 text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-1 sm:gap-2 md:gap-3 mb-6 sm:mb-8 md:mb-10 text-center">
+              <p className="text-gray-800 dark:text-neutral-400 text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
                 Build
               </p>
               <FlipWords
@@ -84,10 +84,10 @@ const Main = () => {
                   'Innovations',
                 ]}
                 duration={3000}
-                className="text-[#05B1DE] dark:text-[#05B1DE] text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold"
+                className="text-[#05B1DE] dark:text-[#05B1DE] text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight"
               />
             </div>
-            <p className="text-gray-600 dark:text-neutral-400 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-normal px-4 max-w-4xl mx-auto">
+            <p className="text-gray-600 dark:text-neutral-400 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-normal px-4 max-w-4xl mx-auto leading-relaxed">
               Shaping the future of innovation at JSS University through
               creativity, research, and transformative ideas that inspire
               progress.
@@ -98,10 +98,10 @@ const Main = () => {
         <div className="swipe-down-button">
           <button
             onClick={scrollToTimeline}
-            className="group flex flex-col items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-full bg-[#05B1DE]/20 hover:bg-[#05B1DE]/30 backdrop-blur-sm border-2 border-[#05B1DE]/40 hover:border-[#05B1DE]/60 transition-all duration-300 hover:scale-110 shadow-lg"
+            className="group flex flex-col items-center gap-2 p-4 rounded-full bg-[#05B1DE]/20 hover:bg-[#05B1DE]/30 backdrop-blur-md border-2 border-[#05B1DE]/40 hover:border-[#05B1DE]/60 transition-all duration-300 hover:scale-110 shadow-[0_0_20px_rgba(5,177,222,0.3)]"
             aria-label="Scroll to timeline section"
           >
-            <FaChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-[#05B1DE] group-hover:translate-y-1 transition-transform duration-300 animate-bounce" />
+            <FaChevronDown className="w-5 h-5 text-[#05B1DE] group-hover:translate-y-1 transition-transform duration-300 animate-bounce" />
           </button>
         </div>
       </div>

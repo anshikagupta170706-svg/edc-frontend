@@ -41,25 +41,17 @@ const UpcomingEventButton = ({ className, onClick, size = 'default' }) => {
 
           {/* Inner Content */}
           <div className={cn(
-            "relative w-full flex items-center justify-center gap-3 bg-[#030303]/90 backdrop-blur-3xl rounded-full",
-            isSmall ? "px-3 py-1.5 gap-1.5" : "px-6 py-2.5 gap-3"
+            "relative flex items-center justify-center bg-[#030303]/90 backdrop-blur-3xl rounded-full",
+            isSmall ? "p-2" : "p-3"
           )}>
             {/* Icon with Glow */}
             <div className="relative flex items-center justify-center">
-              <Rocket className={cn("text-[#05B1DE] transition-transform duration-500 group-hover:rotate-[15deg] group-hover:scale-110", isSmall ? "size-3" : "size-4")} />
-              <div className={cn("absolute inset-0 bg-[#05B1DE] blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-500", isSmall ? "size-3" : "size-4")}></div>
+              <Rocket className={cn("text-[#05B1DE] transition-transform duration-500 group-hover:rotate-[15deg] group-hover:scale-110", isSmall ? "size-4" : "size-5")} />
+              <div className={cn("absolute inset-0 bg-[#05B1DE] blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-500", isSmall ? "size-4" : "size-5")}></div>
             </div>
 
-            {/* Text with Premium Gradient & Mystery Effect */}
-            <span className={cn(
-              "font-bold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-slate-100 via-white to-slate-300 group-hover:from-white group-hover:to-[#05B1DE] transition-all duration-300",
-              isSmall ? "text-[10px]" : "text-sm xl:text-base"
-            )}>
-              <ScrambleText text={isSmall ? "EVENT 2026" : "See What’s Coming"} triggerOnHover={true} className="inline-block shrink-0" />
-            </span>
-
-            {/* Right indicator (subtle) */}
-            <div className={cn("rounded-full bg-[#05B1DE] shadow-[0_0_8px_#05B1DE] animate-pulse", isSmall ? "w-1 h-1" : "w-1.5 h-1.5")}></div>
+            {/* Glowing dot indicator (subtle) */}
+            <div className={cn("absolute top-0 right-0 rounded-full bg-[#05B1DE] shadow-[0_0_8px_#05B1DE] animate-pulse", isSmall ? "w-1 h-1" : "w-1.5 h-1.5")}></div>
           </div>
         </div>
       </div>
