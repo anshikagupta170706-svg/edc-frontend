@@ -96,7 +96,7 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="swipe-down-button">
+        <div className="swipe-down-button hidden md:block">
           <button
             onClick={scrollToTimeline}
             className="group flex flex-col items-center gap-2 p-4 rounded-full bg-[#05B1DE]/20 hover:bg-[#05B1DE]/30 backdrop-blur-md border-2 border-[#05B1DE]/40 hover:border-[#05B1DE]/60 transition-all duration-300 hover:scale-110 shadow-[0_0_20px_rgba(5,177,222,0.3)]"
@@ -272,36 +272,36 @@ const Main = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 md:gap-10">
             {/* Core Team Card */}
             <div
               onClick={() => navigate('/team?filter=Core Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-amber-50 dark:from-neutral-900 dark:to-amber-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500 dark:hover:border-amber-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-amber-50 dark:from-neutral-900 dark:to-amber-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500 dark:hover:border-amber-500 overflow-hidden"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-400 rounded-t-3xl"></div>
 
               {/* Floating sparkles */}
-              <div className="absolute top-6 right-6 text-amber-500/20 group-hover:text-amber-500/40 transition-all duration-300">
-                <HiSparkles className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-amber-500/20 group-hover:text-amber-500/40 transition-all duration-300">
+                <HiSparkles className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <FaCrown className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <FaCrown className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-amber-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-amber-500 transition-colors duration-300">
                   Core Team
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Leading EDC's strategic vision, making key decisions, and
                   guiding the organization towards excellence in
                   entrepreneurship and innovation.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-amber-500/30 group-hover:text-amber-500 transition-colors duration-300">
-                    <FaCrown className="w-8 h-8" />
+                    <FaCrown className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -310,31 +310,31 @@ const Main = () => {
             {/* Technical Team Card */}
             <div
               onClick={() => navigate('/team?filter=Technical Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-blue-50 dark:from-neutral-900 dark:to-blue-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-[#05B1DE] dark:hover:border-[#05B1DE] overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-blue-50 dark:from-neutral-900 dark:to-blue-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-[#05B1DE] dark:hover:border-[#05B1DE] overflow-hidden"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#05B1DE]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-[#05B1DE] via-blue-500 to-cyan-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-[#05B1DE] via-blue-500 to-cyan-400 rounded-t-3xl"></div>
 
               {/* Floating sparkles */}
-              <div className="absolute top-6 right-6 text-[#05B1DE]/20 group-hover:text-[#05B1DE]/40 transition-all duration-300">
-                <HiSparkles className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-[#05B1DE]/20 group-hover:text-[#05B1DE]/40 transition-all duration-300">
+                <HiSparkles className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-[#05B1DE] to-blue-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <FaLaptopCode className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-[#05B1DE] to-blue-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <FaLaptopCode className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-[#05B1DE] transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-[#05B1DE] transition-colors duration-300">
                   Technical Team
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Building cutting-edge solutions, developing websites, apps,
                   and managing technical infrastructure for all EDC initiatives.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-[#05B1DE]/30 group-hover:text-[#05B1DE] transition-colors duration-300">
-                    <FaCode className="w-8 h-8" />
+                    <FaCode className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -343,29 +343,29 @@ const Main = () => {
             {/* Design Team Card */}
             <div
               onClick={() => navigate('/team?filter=Design Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-purple-50 dark:from-neutral-900 dark:to-purple-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-purple-500 dark:hover:border-purple-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-purple-50 dark:from-neutral-900 dark:to-purple-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-purple-500 dark:hover:border-purple-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-400 rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-purple-500/20 group-hover:text-purple-500/40 transition-all duration-300">
-                <HiLightBulb className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-purple-500/20 group-hover:text-purple-500/40 transition-all duration-300">
+                <HiLightBulb className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <MdDesignServices className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <MdDesignServices className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-purple-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-purple-500 transition-colors duration-300">
                   Design Team
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Creating stunning visual experiences, brand identity, and user
                   interfaces that bring our vision to life with creativity.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-purple-500/30 group-hover:text-purple-500 transition-colors duration-300">
-                    <FaPalette className="w-8 h-8" />
+                    <FaPalette className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -374,29 +374,29 @@ const Main = () => {
             {/* Events & Training Team Card */}
             <div
               onClick={() => navigate('/team?filter=Events and Training Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-orange-50 dark:from-neutral-900 dark:to-orange-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-orange-500 dark:hover:border-orange-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-orange-50 dark:from-neutral-900 dark:to-orange-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-orange-500 dark:hover:border-orange-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-orange-500/20 group-hover:text-orange-500/40 transition-all duration-300">
-                <FaRocket className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-orange-500/20 group-hover:text-orange-500/40 transition-all duration-300">
+                <FaRocket className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <MdEvent className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <MdEvent className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-orange-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-orange-500 transition-colors duration-300">
                   Events & Training
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Organizing workshops, hackathons, and training sessions to
                   foster learning and community growth through engagement.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-orange-500/30 group-hover:text-orange-500 transition-colors duration-300">
-                    <FaCalendarAlt className="w-8 h-8" />
+                    <FaCalendarAlt className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -405,29 +405,29 @@ const Main = () => {
             {/* Marketing Team Card */}
             <div
               onClick={() => navigate('/team?filter=Marketing Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-green-50 dark:from-neutral-900 dark:to-green-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-green-500 dark:hover:border-green-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-green-50 dark:from-neutral-900 dark:to-green-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-green-500 dark:hover:border-green-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-green-500/20 group-hover:text-green-500/40 transition-all duration-300">
-                <HiSparkles className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-green-500/20 group-hover:text-green-500/40 transition-all duration-300">
+                <HiSparkles className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <MdCampaign className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <MdCampaign className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-green-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-green-500 transition-colors duration-300">
                   Marketing Team
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Promoting EDC initiatives, building brand awareness, and
                   connecting with the entrepreneurial community strategically.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-green-500/30 group-hover:text-green-500 transition-colors duration-300">
-                    <FaBullhorn className="w-8 h-8" />
+                    <FaBullhorn className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -436,29 +436,29 @@ const Main = () => {
             {/* Content & Documentation Team Card */}
             <div
               onClick={() => navigate('/team?filter=Content and Documentation Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-blue-50 dark:from-neutral-900 dark:to-blue-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-blue-50 dark:from-neutral-900 dark:to-blue-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-[#05B1DE] rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-[#05B1DE] rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-blue-500/20 group-hover:text-blue-500/40 transition-all duration-300">
-                <HiLightBulb className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-blue-500/20 group-hover:text-blue-500/40 transition-all duration-300">
+                <HiLightBulb className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <FaFileAlt className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <FaFileAlt className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-blue-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-blue-500 transition-colors duration-300">
                   Content & Docs
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Creating compelling content, maintaining documentation, and
                   ensuring clear communication across all platforms.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-blue-500/30 group-hover:text-blue-500 transition-colors duration-300">
-                    <FaFileAlt className="w-8 h-8" />
+                    <FaFileAlt className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -467,29 +467,29 @@ const Main = () => {
             {/* Media & Networking Team Card */}
             <div
               onClick={() => navigate('/team?filter=Media and Networking Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-pink-50 dark:from-neutral-900 dark:to-pink-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-pink-500 dark:hover:border-pink-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-pink-50 dark:from-neutral-900 dark:to-pink-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-pink-500 dark:hover:border-pink-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-pink-500 via-rose-500 to-red-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-pink-500 via-rose-500 to-red-400 rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-pink-500/20 group-hover:text-pink-500/40 transition-all duration-300">
-                <FaUsers className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-pink-500/20 group-hover:text-pink-500/40 transition-all duration-300">
+                <FaUsers className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-pink-500 to-rose-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <FaNetworkWired className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <FaNetworkWired className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-pink-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-pink-500 transition-colors duration-300">
                   Media & Networking
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Building connections, managing social media presence, and
                   fostering relationships within the startup ecosystem.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-pink-500/30 group-hover:text-pink-500 transition-colors duration-300">
-                    <FaNetworkWired className="w-8 h-8" />
+                    <FaNetworkWired className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -498,30 +498,30 @@ const Main = () => {
             {/* Outreach Team Card */}
             <div
               onClick={() => navigate('/team?filter=Outreach Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-teal-50 dark:from-neutral-900 dark:to-teal-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-teal-500 dark:hover:border-teal-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-teal-50 dark:from-neutral-900 dark:to-teal-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-teal-500 dark:hover:border-teal-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-400 rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-teal-500/20 group-hover:text-teal-500/40 transition-all duration-300">
-                <FaGlobe className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-teal-500/20 group-hover:text-teal-500/40 transition-all duration-300">
+                <FaGlobe className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <FaGlobe className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <FaGlobe className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-teal-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-teal-500 transition-colors duration-300">
                   Outreach Team
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Expanding EDC's reach, building partnerships with external
                   organizations, and connecting with the broader entrepreneurial
                   ecosystem.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-teal-500/30 group-hover:text-teal-500 transition-colors duration-300">
-                    <FaGlobe className="w-8 h-8" />
+                    <FaGlobe className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
@@ -530,30 +530,30 @@ const Main = () => {
             {/* Liaisoning Team Card */}
             <div
               onClick={() => navigate('/team?filter=Liaisoning Team')}
-              className="cursor-pointer group relative bg-gradient-to-br from-white to-indigo-50 dark:from-neutral-900 dark:to-indigo-950/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 overflow-hidden"
+              className="cursor-pointer group relative bg-gradient-to-br from-white to-indigo-50 dark:from-neutral-900 dark:to-indigo-950/20 rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 rounded-t-3xl"></div>
+              <div className="absolute top-0 left-0 w-full h-2 sm:h-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 rounded-t-3xl"></div>
 
-              <div className="absolute top-6 right-6 text-indigo-500/20 group-hover:text-indigo-500/40 transition-all duration-300">
-                <FaHandshake className="w-7 h-7" />
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 text-indigo-500/20 group-hover:text-indigo-500/40 transition-all duration-300">
+                <FaHandshake className="w-5 h-5 sm:w-7 sm:h-7" />
               </div>
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                  <FaHandshake className="w-12 h-12 text-white" />
+                <div className="flex items-center justify-center w-12 h-12 sm:w-24 sm:h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl sm:rounded-3xl mb-4 sm:mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                  <FaHandshake className="w-6 h-6 sm:w-12 sm:h-12 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-6 group-hover:text-indigo-500 transition-colors duration-300">
+                <h3 className="text-sm sm:text-3xl font-bold text-neutral-800 dark:text-neutral-100 mb-2 sm:mb-6 group-hover:text-indigo-500 transition-colors duration-300">
                   Liaisoning Team
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-sm sm:text-base">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-4 sm:mb-8 leading-tight sm:leading-relaxed text-[10px] sm:text-base">
                   Facilitating communication between teams, coordinating
                   internal processes, and ensuring smooth collaboration across
                   all departments.
                 </p>
                 <div className="flex items-center justify-center">
                   <div className="text-indigo-500/30 group-hover:text-indigo-500 transition-colors duration-300">
-                    <FaHandshake className="w-8 h-8" />
+                    <FaHandshake className="w-5 h-5 sm:w-8 sm:h-8" />
                   </div>
                 </div>
               </div>
