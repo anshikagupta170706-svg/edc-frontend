@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { cn } from '@/lib/utils';
 import { Spotlight } from '@/components/ui/spotlight';
-import { FlipWords } from '@/components/ui/flip-words';
+import RotatingText from '@/components/RotatingText';
 import {
   Popover,
   PopoverContent,
@@ -56,50 +56,140 @@ const Main = () => {
 
   return (
     <div>
-      {/* Spotlight Section */}
-      <div className="relative flex min-h-screen sm:min-h-[85vh] md:min-h-screen w-full overflow-hidden rounded-md bg-white dark:bg-black antialiased items-center justify-center px-4 sm:px-6">
+      {/* Hero Section */}
+      <div className="relative flex min-h-screen w-full overflow-hidden bg-white dark:bg-black antialiased items-center justify-center px-4 sm:px-6">
+        {/* Grid Background */}
         <div
           className={cn(
-            'pointer-events-none absolute inset-0 [background-size:20px_20px] sm:[background-size:30px_30px] md:[background-size:40px_40px] select-none',
+            'pointer-events-none absolute inset-0 [background-size:20px_20px] sm:[background-size:30px_30px] md:[background-size:40px_40px] select-none opacity-40',
             'dark:[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]',
             '[background-image:linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)]'
           )}
         />
 
+        {/* Floating Gradient Orbs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
+          {/* Primary orb - top right */}
+          <div className="animate-float-slow absolute -top-20 -right-20 sm:top-10 sm:right-10 md:top-20 md:right-20 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-gradient-to-br from-[#05B1DE]/30 to-cyan-400/10 animate-pulse-glow" />
+          {/* Secondary orb - bottom left */}
+          <div className="animate-float-slow-reverse absolute -bottom-32 -left-32 sm:bottom-0 sm:left-0 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] rounded-full bg-gradient-to-tr from-purple-500/20 to-[#05B1DE]/10 animate-pulse-glow" style={{ animationDelay: '2s' }} />
+          {/* Accent orb - center */}
+          <div className="animate-float-diagonal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-gradient-to-r from-[#05B1DE]/10 to-blue-600/5 animate-pulse-glow" style={{ animationDelay: '4s' }} />
+        </div>
+
+        {/* Spotlight */}
         <Spotlight
           className="top-0 left-1/2 -translate-x-1/2 md:-top-20 md:left-1/2 md:-translate-x-1/2"
           fill="#05B1DE"
         />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 sm:py-16 md:py-20">
-          <div className="text-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-1 sm:gap-2 md:gap-3 mb-6 sm:mb-8 md:mb-10 text-center">
-              <p className="text-gray-800 dark:text-neutral-400 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
+
+        {/* Radial vignette overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] select-none" />
+
+        {/* Main Hero Content */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:py-20 md:py-24 lg:py-28">
+          <div className="text-center flex flex-col items-center">
+
+
+
+            {/* Badge Pill */}
+            <div className="animate-fade-up-delay-1 mb-4 sm:mb-6 md:mb-8">
+              <div className="hero-shimmer inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full border border-[#05B1DE]/30 bg-[#05B1DE]/5 backdrop-blur-sm">
+                <HiSparkles className="w-3 h-3 sm:w-4 sm:h-4 text-[#05B1DE]" />
+                <span className="text-[0.6rem] sm:text-xs md:text-sm font-medium text-gray-400 tracking-wide uppercase">
+                  JSS University's Entrepreneurship Club
+                </span>
+              </div>
+            </div>
+
+            {/* Main Heading — mobile: 3rem, sm: 3.75rem, md: 5rem, lg: 6.5rem, xl: 8rem */}
+            <div className="animate-fade-up-delay-2 flex flex-col md:flex-row items-center justify-center gap-0 sm:gap-2 md:gap-3 mb-2 sm:mb-3 md:mb-4 text-center">
+              <p className="text-gray-800 dark:text-neutral-200 text-[4rem] sm:text-[3.75rem] md:text-[5rem] lg:text-[6rem] xl:text-[6rem] font-bold tracking-tight leading-[1.05]">
                 Build
               </p>
-              <FlipWords
-                words={[
-                  'Startups',
-                  'Leaders',
-                  'Communities',
-                  'Networks',
-                  'Innovations',
-                ]}
-                duration={3000}
-                className="text-[#05B1DE] dark:text-[#05B1DE] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight"
+              <RotatingText
+                texts={['Startups', 'Leaders', 'Vision', 'Networks', 'Future']}
+                mainClassName="px-2 sm:px-2 md:px-3 text-[#05B1DE] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center text-[4rem] sm:text-[3.75rem] md:text-[5rem] lg:text-[6rem] xl:text-[6rem] font-bold tracking-tight leading-[1.05]"
+                staggerFrom="last"
+                initial={{ y: '100%', opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: '-120%', opacity: 0 }}
+                staggerDuration={0.02}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: 'spring', damping: 30, stiffness: 450 }}
+                rotationInterval={3000}
               />
             </div>
-            <p className="text-gray-600 dark:text-neutral-400 text-[0.8rem] sm:text-sm md:text-base lg:text-lg xl:text-xl font-normal px-4 max-w-4xl mx-auto leading-relaxed">
-              Shaping the future of innovation at JSS University through
-              creativity, research, and transformative ideas that inspire
-              progress.
+
+            {/* Subtitle — mobile: 0.75rem, sm: 0.875rem, md: 1rem, lg: 1.125rem, xl: 1.25rem */}
+            <p className="animate-fade-up-delay-3 text-gray-600 dark:text-neutral-500 text-[1.25rem] sm:text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] xl:text-[1.25rem] font-normal px-4 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 md:mb-10">
+              Think Big. Build Bigger.
             </p>
+
+            {/* CTA Buttons */}
+            <div className="animate-fade-up-delay-3 flex flex-row items-center gap-2.5 sm:gap-4 mb-8 sm:mb-12 md:mb-14">
+              <button
+                onClick={() => navigate('/events')}
+                className="group flex items-center gap-1.5 sm:gap-2 px-5 py-2.5 sm:px-8 sm:py-3.5 bg-[#05B1DE] text-white rounded-full font-semibold text-xs sm:text-sm md:text-base hover:bg-[#04a0c7] transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(5,177,222,0.3)] hover:shadow-[0_0_40px_rgba(5,177,222,0.5)]"
+              >
+                Explore Events
+                <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+              <button
+                onClick={() => navigate('/team')}
+                className="group flex items-center gap-1.5 sm:gap-2 px-5 py-2.5 sm:px-8 sm:py-3.5 bg-white/5 text-gray-300 rounded-full font-semibold text-xs sm:text-sm md:text-base border border-white/10 hover:border-[#05B1DE]/40 hover:bg-[#05B1DE]/10 hover:text-white transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+              >
+                Meet Our Team
+                <FaUsers className="w-3 h-3 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform duration-300" />
+              </button>
+            </div>
+
+            {/* Stats Row */}
+            <div className="animate-fade-up-delay-4 w-full max-w-3xl mx-auto">
+              <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6">
+                <div className="group text-center p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-[#05B1DE]/30 hover:bg-[#05B1DE]/5 transition-all duration-500 backdrop-blur-sm">
+                  <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#05B1DE] mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform duration-300">
+                    15+
+                  </p>
+                  <p className="text-[0.5rem] sm:text-[0.65rem] md:text-xs lg:text-sm text-gray-500 dark:text-neutral-500 font-medium uppercase tracking-wider">
+                    Events Hosted
+                  </p>
+                </div>
+                <div className="group text-center p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-[#05B1DE]/30 hover:bg-[#05B1DE]/5 transition-all duration-500 backdrop-blur-sm">
+                  <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#05B1DE] mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform duration-300">
+                    50+
+                  </p>
+                  <p className="text-[0.5rem] sm:text-[0.65rem] md:text-xs lg:text-sm text-gray-500 dark:text-neutral-500 font-medium uppercase tracking-wider">
+                    Active Members
+                  </p>
+                </div>
+                <div className="group text-center p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-[#05B1DE]/30 hover:bg-[#05B1DE]/5 transition-all duration-500 backdrop-blur-sm">
+                  <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#05B1DE] mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform duration-300">
+                    500+
+                  </p>
+                  <p className="text-[0.5rem] sm:text-[0.65rem] md:text-xs lg:text-sm text-gray-500 dark:text-neutral-500 font-medium uppercase tracking-wider">
+                    Students Reached
+                  </p>
+                </div>
+                <div className="group text-center p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-[#05B1DE]/30 hover:bg-[#05B1DE]/5 transition-all duration-500 backdrop-blur-sm">
+                  <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#05B1DE] mb-0.5 sm:mb-1 group-hover:scale-110 transition-transform duration-300">
+                    8
+                  </p>
+                  <p className="text-[0.5rem] sm:text-[0.65rem] md:text-xs lg:text-sm text-gray-500 dark:text-neutral-500 font-medium uppercase tracking-wider">
+                    Departments
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        {/* Scroll Down Button */}
         <div className="swipe-down-button hidden md:block">
           <button
             onClick={scrollToTimeline}
-            className="group flex flex-col items-center gap-2 p-4 rounded-full bg-[#05B1DE]/20 hover:bg-[#05B1DE]/30 backdrop-blur-md border-2 border-[#05B1DE]/40 hover:border-[#05B1DE]/60 transition-all duration-300 hover:scale-110 shadow-[0_0_20px_rgba(5,177,222,0.3)]"
+            className="group flex flex-col items-center gap-2 p-4 rounded-full bg-[#05B1DE]/10 hover:bg-[#05B1DE]/20 backdrop-blur-md border border-[#05B1DE]/20 hover:border-[#05B1DE]/40 transition-all duration-300 hover:scale-110 shadow-[0_0_20px_rgba(5,177,222,0.15)]"
             aria-label="Scroll to timeline section"
           >
             <FaChevronDown className="w-5 h-5 text-[#05B1DE] group-hover:translate-y-1 transition-transform duration-300 animate-bounce" />
