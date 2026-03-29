@@ -188,14 +188,14 @@ const FoundersPit = () => {
           {/* Grid background */}
           <div className="absolute inset-0 fp-grid-bg pointer-events-none" />
 
-           {/* Purple curtain stripes (Figma inspired) */}
-           <PurpleCurtain left={8} opacity={0.15} width={3} delay={0} className="hidden lg:block" />
-           <PurpleCurtain left={18} opacity={0.1} width={2} delay={0.5} className="hidden sm:block" />
-           <PurpleCurtain left={32} opacity={0.2} width={4} delay={1} />
-           <PurpleCurtain left={50} opacity={0.12} width={3} delay={1.5} className="hidden md:block" />
-           <PurpleCurtain left={68} opacity={0.18} width={3} delay={0.8} />
-           <PurpleCurtain left={82} opacity={0.1} width={2} delay={1.2} className="hidden sm:block" />
-           <PurpleCurtain left={92} opacity={0.15} width={3} delay={0.3} className="hidden lg:block" />
+          {/* Purple curtain stripes (Figma inspired) */}
+          <PurpleCurtain left={8} opacity={0.15} width={3} delay={0} className="hidden lg:block" />
+          <PurpleCurtain left={18} opacity={0.1} width={2} delay={0.5} className="hidden sm:block" />
+          <PurpleCurtain left={32} opacity={0.2} width={4} delay={1} />
+          <PurpleCurtain left={50} opacity={0.12} width={3} delay={1.5} className="hidden md:block" />
+          <PurpleCurtain left={68} opacity={0.18} width={3} delay={0.8} />
+          <PurpleCurtain left={82} opacity={0.1} width={2} delay={1.2} className="hidden sm:block" />
+          <PurpleCurtain left={92} opacity={0.15} width={3} delay={0.3} className="hidden lg:block" />
 
           {/* LightRays (purple tinted) */}
           <div className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60">
@@ -273,7 +273,7 @@ const FoundersPit = () => {
               </div>
 
               {/* Restructured Text Title (Main Focus) */}
-              <h1 className="fp-title font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.85] text-center filter drop-shadow-[0_10px_30px_rgba(94,12,159,0.3)]">
+              <h1 className="fp-title font-black text-6xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.85] text-center filter drop-shadow-[0_10px_30px_rgba(94,12,159,0.3)]">
                 FOUNDER'S
                 <br />
                 <span className="text-white/90">PIT</span>
