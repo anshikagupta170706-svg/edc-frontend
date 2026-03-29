@@ -9,7 +9,7 @@ import './BottomNavbar.css';
  *
  * Visible only below 768px viewport width.
  * Fixed at the bottom of the screen with safe-area support.
- * 5 navigation items: Home, Team, Events, About, Upcoming Event.
+ * 5 navigation items: Home, Team, Events, About, Founders Pit.
  */
 
 const navItems = [
@@ -17,7 +17,7 @@ const navItems = [
   { label: 'Team', href: '/team', icon: FiUsers },
   { label: 'Events', href: '/events', icon: FiCalendar },
   { label: 'About', href: '/about', icon: FiInfo },
-  { label: 'Event', href: '/upcoming-event', icon: Rocket },
+  { label: 'FP', href: '/founders-pit', icon: Rocket },
 ];
 
 export default function BottomNavbar() {
@@ -36,7 +36,7 @@ export default function BottomNavbar() {
             <Link
               key={item.label}
               to={item.href}
-              className={`bottom-navbar-item${isActive ? ' active' : ''}${item.label === 'Event' ? ' special-item' : ''}`}
+              className={`bottom-navbar-item${isActive ? ' active' : ''}${item.label === 'FP' ? ' special-item' : ''}`}
               aria-current={isActive ? 'page' : undefined}
             >
               <span className="bottom-navbar-icon">

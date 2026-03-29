@@ -131,19 +131,19 @@
 }
 
 .bottom-navbar-item.special-item .bottom-navbar-icon svg {
-  color: #05B1DE;
+  color: var(--primary-brand);
   animation: special-button-pulse 3s infinite ease-in-out;
 }
 
 .bottom-navbar-item.special-item .bottom-navbar-label {
-  color: #05B1DE;
+  color: var(--primary-brand);
   font-weight: 600;
   text-shadow: 0 0 8px rgba(5, 177, 222, 0.2);
 }
 
 /* Active State for Special Item */
 .bottom-navbar-item.special-item.active .bottom-navbar-icon {
-  background: #05B1DE;
+  background: var(--primary-brand);
   box-shadow: 0 0 20px rgba(5, 177, 222, 0.6);
   transform: translateY(-2px);
 }
@@ -154,13 +154,13 @@
 }
 
 .bottom-navbar-item.special-item.active .bottom-navbar-label {
-  color: #05B1DE;
+  color: var(--primary-brand);
   text-shadow: 0 0 12px rgba(5, 177, 222, 0.4);
 }
 
 /* Specific Active Dot for Special Item */
 .bottom-navbar-item.special-item.active::after {
-  background: #05B1DE;
+  background: var(--primary-brand);
   box-shadow: 0 0 10px rgba(5, 177, 222, 0.8);
 }
 

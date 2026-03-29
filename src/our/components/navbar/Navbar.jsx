@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useScroll } from '@/components/use-scroll';
 import Logo from './Logo';
-import UpcomingEventButton from './UpcomingEventButton';
+import FoundersPitButton from './FoundersPitButton';
 
 // Icons
 import { FiHome, FiUsers, FiCalendar, FiInfo } from 'react-icons/fi';
@@ -13,6 +13,9 @@ import { FiHome, FiUsers, FiCalendar, FiInfo } from 'react-icons/fi';
 export default function Navbar() {
 	const scrolled = useScroll(10);
 	const location = useLocation();
+	const isFoundersPit = location.pathname === '/founders-pit';
+	const primaryColor = isFoundersPit ? '#7B2FBE' : '#05B1DE';
+	const primaryHover = isFoundersPit ? '#5E0C9F' : '#04a0c7';
 
 	const links = [
 		{ label: 'Home', href: '/', icon: FiHome },
@@ -58,7 +61,10 @@ export default function Navbar() {
 							<Link key={i} to={link.href}>
 								<Button
 									variant="ghost"
-									className="text-sm xl:text-base px-3 xl:px-4 font-medium hover:bg-transparent hover:text-[#05B1DE] transition-colors duration-300"
+									className={cn(
+										"text-sm xl:text-base px-3 xl:px-4 font-medium hover:bg-transparent transition-colors duration-300",
+										isFoundersPit ? "hover:text-[#7B2FBE]" : "hover:text-[#05B1DE]"
+									)}
 								>
 									{link.label}
 								</Button>
@@ -68,16 +74,16 @@ export default function Navbar() {
 
 					{/* Right Section Buttons */}
 					<div className="flex items-center gap-2 z-10">
-						<Link to="/upcoming-event" className="mx-2">
-							<UpcomingEventButton />
+						<Link to="/founders-pit" className="mx-2">
+							<FoundersPitButton />
 						</Link>
 
 						<Button
 							size="sm"
 							className="text-white transition-colors duration-300"
-							style={{ backgroundColor: '#05B1DE' }}
-							onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#04a0c7'; }}
-							onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#05B1DE'; }}
+							style={{ backgroundColor: primaryColor }}
+							onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryHover; }}
+							onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = primaryColor; }}
 							onClick={() => {
 								const footer = document.getElementById('footer');
 								if (footer) {
@@ -113,9 +119,9 @@ export default function Navbar() {
 				<Button
 					size="sm"
 					className="text-white transition-colors duration-300"
-					style={{ backgroundColor: '#05B1DE' }}
-					onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#04a0c7'; }}
-					onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#05B1DE'; }}
+					style={{ backgroundColor: primaryColor }}
+					onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = primaryHover; }}
+					onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = primaryColor; }}
 					onClick={() => {
 						const footer = document.getElementById('footer');
 						if (footer) {

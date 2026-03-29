@@ -6,7 +6,7 @@ import Team from './our/views/Team';
 import Main from './our/views/Main';
 import Events from './our/views/Events';
 import EventDetail from './our/views/EventDetail';
-import UpcomingEvent from './our/views/UpcomingEvent';
+import FoundersPit from './our/views/FoundersPit';
 import About from './our/views/About';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -23,7 +23,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
-          <Route path="/upcoming-event" element={<UpcomingEvent />} />
+          <Route path="/founders-pit" element={<FoundersPit />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>

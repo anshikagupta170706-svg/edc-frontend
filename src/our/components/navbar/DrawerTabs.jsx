@@ -13,7 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { MenuIcon, X, Home, Users2, CalendarDays, Info, Rocket } from 'lucide-react';
 import Logo from './Logo';
-import UpcomingEventButton from './UpcomingEventButton';
+import FoundersPitButton from './FoundersPitButton';
 
 const navButtonBase =
   'justify-start w-full h-11 px-3 rounded-lg transition-all hover:translate-x-0.5 hover:bg-accent/60 hover:text-accent-foreground';
