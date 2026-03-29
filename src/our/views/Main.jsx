@@ -579,6 +579,44 @@ const Main = () => {
 
           {/* Events Cards */}
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-6 xl:gap-8 max-w-7xl mx-auto">
+            {/* 0. Pixel X */}
+            <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[300px] xl:max-w-[280px]">
+              <TiltedCard
+                imageSrc="https://res.cloudinary.com/dh8cqlngr/image/upload/v1774386653/pixelx_sfznix.png"
+                altText="Pixel X"
+                captionText="Pixel X"
+                containerHeight="400px"
+                containerWidth="100%"
+                imageHeight="400px"
+                imageWidth="100%"
+                rotateAmplitude={8}
+                scaleOnHover={1.1}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                onClick={() => navigate('/events/pixel-x')}
+              />
+            </div>
+
+            {/* 0. UI/UX Workshop */}
+            <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[300px] xl:max-w-[280px]">
+              <TiltedCard
+                imageSrc="https://res.cloudinary.com/dh8cqlngr/image/upload/v1774387556/10160695-abfd-4065-b05f-04825a49a52e.png"
+                altText="UI/UX Workshop"
+                captionText="UI/UX Workshop"
+                containerHeight="400px"
+                containerWidth="100%"
+                imageHeight="400px"
+                imageWidth="100%"
+                rotateAmplitude={8}
+                scaleOnHover={1.1}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                onClick={() => navigate('/events/ui-ux-workshop')}
+              />
+            </div>
+
             {/* 1. LinkedIn Workshop */}
             <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[300px] xl:max-w-[280px]">
               <TiltedCard
