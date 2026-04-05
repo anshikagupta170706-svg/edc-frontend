@@ -209,11 +209,11 @@ const FoundersPit = () => {
   };
 
   const handleHeroCta = () => {
-    if (eventPhase === "pre_launch" || eventPhase === "evaluation" || eventPhase === "results") {
-      setIsPopupOpen(true);
-    } else {
-      executeScroll("registration-portal");
+    if (eventPhase === "registration_open") {
+      window.open('https://events.edcjssun.com/', '_blank');
+      return;
     }
+    executeScroll("battle-timeline");
   };
 
   return (
@@ -349,7 +349,7 @@ const FoundersPit = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ animation: 'fadeSlideUp 0.8s ease-out 0.4s both' }}>
               <Button size="lg" onClick={handleHeroCta} className="fp-btn-primary w-full sm:w-auto text-white font-bold text-base px-10 py-7 rounded-full group">
-                Enter The Pit
+                Register Now
                 <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button size="lg" onClick={() => executeScroll("what-is-fp")} variant="outline" className="w-full sm:w-auto border-2 border-[#7B2FBE]/30 text-[#D776FF] hover:bg-[#7B2FBE]/10 hover:border-[#D776FF]/60 font-semibold text-base px-10 py-7 rounded-full bg-transparent">
@@ -377,7 +377,7 @@ const FoundersPit = () => {
         </div>
 
         {/* 2.5 TIMELINE + COUNTDOWN ══════════ */}
-        <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-[#05000A] border-t border-[#7B2FBE]/20">
+        <section id="battle-timeline" className="relative py-16 sm:py-24 px-4 sm:px-6 bg-[#05000A] border-t border-[#7B2FBE]/20">
           <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none" />
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-12">
@@ -643,19 +643,31 @@ const FoundersPit = () => {
                 
                 <div className="fp-card rounded-3xl p-8 sm:p-12 mb-10 border-l-4 border-l-[#D776FF] bg-[#1B002B]/30">
                     <h3 className="text-2xl font-bold flex items-center gap-3 mb-8"><FileText className="text-[#D776FF] size-8"/> Submission Requirements (STRICT)</h3>
-                    <p className="text-white/80 font-semibold mb-6 text-lg">Your deck must contain exactly 3 slides covering:</p>
+                  <p className="text-white/80 font-semibold mb-6 text-lg">Your deck must follow this exact 6-slide structure:</p>
                     <div className="space-y-6">
                         <div className="flex gap-4 items-start">
                             <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">1</div>
-                            <div><h4 className="font-bold text-white text-lg">Problem Statement</h4><p className="text-white/50 text-sm mt-1">Clearly define the campus problem you are tackling.</p></div>
+                      <div><h4 className="font-bold text-white text-lg">Introduction</h4><p className="text-white/50 text-sm mt-1">Introduce your team and set context for the pitch.</p></div>
                         </div>
                         <div className="flex gap-4 items-start">
                             <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">2</div>
-                            <div><h4 className="font-bold text-white text-lg">Proposed Solution</h4><p className="text-white/50 text-sm mt-1">What is your product, service, or strategy?</p></div>
+                      <div><h4 className="font-bold text-white text-lg">Problem Statement</h4><p className="text-white/50 text-sm mt-1">Clearly define the core problem you are solving.</p></div>
                         </div>
                         <div className="flex gap-4 items-start">
                             <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">3</div>
-                            <div><h4 className="font-bold text-white text-lg">Implementation & Impact</h4><p className="text-white/50 text-sm mt-1">How will you execute it and who does it affect?</p></div>
+                      <div><h4 className="font-bold text-white text-lg">Proposed Solution</h4><p className="text-white/50 text-sm mt-1">Explain your product, service, or strategic approach.</p></div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                      <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">4</div>
+                      <div><h4 className="font-bold text-white text-lg">Implementation / Impact</h4><p className="text-white/50 text-sm mt-1">Show execution plan and expected impact.</p></div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                      <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">5</div>
+                      <div><h4 className="font-bold text-white text-lg">Business Model</h4><p className="text-white/50 text-sm mt-1">Summarize how your idea sustains and scales.</p></div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                      <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">6</div>
+                      <div><h4 className="font-bold text-white text-lg">Thank You</h4><p className="text-white/50 text-sm mt-1">Close your presentation clearly and professionally.</p></div>
                         </div>
                     </div>
                 </div>
@@ -668,6 +680,17 @@ const FoundersPit = () => {
                         <h4 className="text-[#D776FF] font-bold mb-3 text-xl">Submission Guidelines</h4>
                         <ul className="text-white/70 text-base list-disc pl-5 space-y-2">
                             <li>Please use PDF/PPT/PPTX formats only (Max 10MB limit).</li>
+                            <li>
+                              Use this official pitch template:{' '}
+                              <a
+                                href="https://pub-2bfd788961cf4002b07405b50ea33378.r2.dev/Founder's%20Pit%20Round%20-%201%20Template.pptx"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-[#D776FF] underline underline-offset-4 hover:text-[#EAC7FF]"
+                              >
+                                Download Template
+                              </a>
+                            </li>
                             <li>Avoid embedding videos or external links as core presentation content.</li>
                             <li>All submissions should be presented in English.</li>
                             <li>Ensure all work is original (purely AI-generated plans are not permitted).</li>
@@ -759,7 +782,7 @@ const FoundersPit = () => {
                 <div className="space-y-4">
                     {[
                         { q: "Can I participate individually?", a: "No. Founder's Pit requires teamwork. You must form a team of 2 to 4 members." },
-                        { q: "What happens if we submit more than 3 slides?", a: "Your team will be immediately disqualified. Following constraints is part of the challenge." },
+                    { q: "What happens if we don't follow the required 6-slide template?", a: "Your team may be disqualified. Following the prescribed slide structure is mandatory." },
                         { q: "Can we submit multiple times?", a: "If you submit multiple times, only the latest submission before the deadline will be considered." },
                         { q: "What happens after Round 1?", a: "Shortlisted teams who survive the online screening will be invited to the campus for the remaining offline rounds, including the bidding, building, and final pitch. Only qualified teams will participate in the offline event day." }
                     ].map((faq, i) => (
