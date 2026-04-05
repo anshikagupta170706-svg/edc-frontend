@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/drawer';
 import { 
   Info, Calendar, MapPin, Users, Lightbulb, ArrowRight, Sparkles, Zap, Target, TrendingUp, 
-  ShieldCheck, Upload, Clock, Phone, Mail, Instagram, MessageCircle, AlertTriangle, FileText, CheckCircle2, ChevronRight, Check
+  ShieldCheck, Upload, Clock, Phone, Mail, Instagram, MessageCircle, AlertTriangle, FileText, CheckCircle2, ChevronRight, Check, Trophy, Medal, Gift
 } from 'lucide-react';
 import { MarqueeAnimation } from '@/components/ui/marquee-effect';
 import LightRays from '../../components/LightRays';
@@ -722,6 +722,70 @@ const FoundersPit = () => {
                     ))}
                 </div>
             </div>
+        </section>
+
+        {/* 9. REWARDS & GOODIES ══════════ */}
+        <section className="py-20 px-4 sm:px-6 bg-[#080010] border-y border-[#7B2FBE]/15 relative overflow-hidden">
+          <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-[240px] bg-[radial-gradient(circle,rgba(215,118,255,0.18)_0%,transparent_70%)] blur-3xl pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <span className="text-[#D776FF] font-bold tracking-[0.2em] uppercase text-xs">Rewards & Recognition</span>
+              <h2 className="text-3xl sm:text-5xl font-black text-white mt-3">Win More Than Just <span className="fp-subtitle">Bragging Rights</span></h2>
+              <p className="text-white/60 mt-4 max-w-3xl mx-auto text-sm sm:text-base">Top teams walk away with tangible rewards, official recognition, and exciting perks from Founder&apos;s Pit.</p>
+            </div>
+
+            <div className="mb-10 fp-card rounded-3xl border border-[#D776FF]/45 p-6 sm:p-8 text-center bg-[#140024]/80 shadow-[0_0_45px_rgba(215,118,255,0.22)]">
+              <p className="text-[#D776FF]/90 text-xs sm:text-sm uppercase tracking-[0.28em] font-bold">Mega Prize Pool</p>
+              <p className="mt-2 text-5xl sm:text-7xl font-black leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#EED6FF] via-[#D776FF] to-[#B45CFF] drop-shadow-[0_0_20px_rgba(215,118,255,0.45)]">
+                Rs. 10000+
+              </p>
+              <p className="mt-3 text-white/70 text-sm sm:text-base">In cash rewards for top-performing teams</p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                {
+                  title: 'Prize Pool',
+                  desc: 'Compete for a major cash prize across top-performing teams.',
+                  icon: Trophy,
+                  highlight: true,
+                },
+                {
+                  title: 'Certificates',
+                  desc: 'Get official participation and merit certificates to strengthen your profile.',
+                  icon: CheckCircle2,
+                },
+                {
+                  title: 'Trophies',
+                  desc: 'Winners and standout teams will receive trophies for their exceptional performance.',
+                  icon: Medal,
+                },
+                {
+                  title: 'Many More Goodies',
+                  desc: 'Exclusive goodies and surprise rewards await teams that rise through the rounds.',
+                  icon: Gift,
+                },
+              ].map((reward, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    'fp-card p-6 rounded-3xl border border-[#7B2FBE]/30 hover:border-[#D776FF]/60',
+                    reward.highlight && 'bg-[#1A0030]/85 border-[#D776FF]/55 shadow-[0_0_30px_rgba(215,118,255,0.2)]'
+                  )}
+                >
+                  <div className="size-12 rounded-xl bg-[#1B002B] border border-[#7B2FBE]/40 flex items-center justify-center mb-4">
+                    <reward.icon className="size-6 text-[#D776FF]" />
+                  </div>
+                  <h3 className={cn('font-black text-white mb-2', reward.highlight ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl')}>
+                    {reward.title}
+                  </h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{reward.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* 10, 11, 14. DYNAMIC STATE PORTAL (REGISTRATION / SUBMISSION) ══════════ */}
