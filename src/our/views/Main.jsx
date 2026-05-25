@@ -102,7 +102,7 @@ const Main = () => {
             <div className="animate-fade-up-delay-1 mb-4 sm:mb-6 md:mb-8">
               <div className="hero-shimmer inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full border border-[#05B1DE]/30 bg-[#05B1DE]/5 backdrop-blur-sm">
                 <HiSparkles className="w-3 h-3 sm:w-4 sm:h-4 text-[#05B1DE]" />
-                <span className="text-[0.6rem] sm:text-xs md:text-sm font-medium text-gray-400 tracking-wide uppercase">
+                <span className="text-base sm:text-lg md:text-xl font-medium text-gray-400 tracking-wide uppercase">
                   JSS University's Entrepreneurship Club
                 </span>
               </div>
