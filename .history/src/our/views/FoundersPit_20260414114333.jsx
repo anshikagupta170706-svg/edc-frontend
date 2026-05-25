@@ -120,8 +120,7 @@ const REG_OPEN_AT = new Date('2026-04-06T00:00:00+05:30');
 const REG_CLOSE_AT = new Date('2026-04-13T23:59:59+05:30');
 const ROUND1_DEADLINE_AT = new Date('2026-04-14T11:59:00+05:30');
 const EVALUATION_START_AT = new Date('2026-04-14T12:00:00+05:30');
-const RESULTS_AT = new Date('2026-04-15T00:00:00+05:30');
-const EVENT_DAY_AT = new Date('2026-04-18T00:00:00+05:30');
+const RESULTS_AT = null;
 const FP_LOGIN_URL = 'https://events.edcjssun.com/login';
 
 const FP_TIMELINE = [
@@ -129,9 +128,9 @@ const FP_TIMELINE = [
   { title: 'Registration Closes', dateLabel: '13/04/2026 (11:59 PM)', at: REG_CLOSE_AT },
   { title: 'PPT Submission Deadline', dateLabel: '14/04/2026 (11:59 AM)', at: ROUND1_DEADLINE_AT },
   { title: 'Evaluation Period', dateLabel: 'Starts from 14/04/2026', at: EVALUATION_START_AT },
-  { title: 'Results Announcement', dateLabel: '15/04/2026', at: RESULTS_AT },
-  { title: 'Event Date', dateLabel: '18/04/2026', at: EVENT_DAY_AT },
-  { title: 'Venue', dateLabel: 'AB-3, Campus', at: EVENT_DAY_AT },
+  { title: 'Results Announcement', dateLabel: 'TBD', at: RESULTS_AT },
+  { title: 'Event Date', dateLabel: '18/04/2026', at: new Date('2026-04-18T00:00:00+05:30') },
+  { title: 'Venue', dateLabel: 'AB-3, Campus', at: new Date('2026-04-18T00:00:00+05:30') },
 ];
 
 const getEventPhase = (now) => {
@@ -148,9 +147,6 @@ const getCountdownTarget = (now) => {
   }
   if (now <= REG_CLOSE_AT) {
     return { label: 'Registration Closes In', target: REG_CLOSE_AT };
-  }
-  if (now < EVENT_DAY_AT) {
-    return { label: 'Event Day Starts In', target: EVENT_DAY_AT };
   }
   return null;
 };
@@ -169,7 +165,6 @@ const FoundersPit = () => {
   // Date-driven phases: "pre_launch", "registration_open", "evaluation", "results"
   const [now, setNow] = useState(() => new Date());
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isAgendaOpen, setIsAgendaOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeFaq, setActiveFaq] = useState(null);
   const heroRef = useRef(null);
@@ -218,22 +213,6 @@ const FoundersPit = () => {
   const handleHeroCta = () => {
     window.open(FP_LOGIN_URL, '_blank');
   };
-
-  const softwareThemes = [
-    { title: 'Web Development Track', icon: Code },
-    { title: 'Mobile App Development Track', icon: Smartphone },
-    { title: 'Data Science & Machine Learning', icon: Database },
-    { title: 'Blockchain & Cryptography Track', icon: Bitcoin },
-    { title: 'Open Innovation Track', icon: Lightbulb },
-  ];
-
-  const hardwareThemes = [
-    { title: 'Smart Cities and IoT Solutions', icon: Building2 },
-    { title: 'IoT-Enabled Healthcare & Assistive Technologies', icon: HeartPulse },
-    { title: 'Smart Wearables for Safety', icon: Shield },
-    { title: 'Disaster Management & Emergency Response', icon: Zap },
-    { title: 'Agritech and Rural Innovation', icon: Leaf },
-  ];
 
   return (
     <>
@@ -425,7 +404,7 @@ const FoundersPit = () => {
                 <div>
                   <p className="text-[#D776FF] text-xs uppercase tracking-[0.2em] font-bold">Live Countdown</p>
                   <h3 className="text-2xl sm:text-3xl font-black text-white mt-2">
-                    {countdownConfig ? countdownConfig.label : 'Event Day Is Live'}
+                    {countdownConfig ? countdownConfig.label : 'Registration Window Closed'}
                   </h3>
                 </div>
                 <div className="flex items-stretch gap-2 sm:gap-3">
@@ -443,7 +422,7 @@ const FoundersPit = () => {
                     ))
                   ) : (
                     <div className="px-5 py-4 rounded-2xl bg-[#1B002B]/70 border border-[#7B2FBE]/40 text-white/70 font-semibold text-sm">
-                      Countdown completed. Event day has arrived.
+                      Countdown completed. Evaluation and results updates are now active.
                     </div>
                   )}
                 </div>
@@ -919,132 +898,6 @@ const FoundersPit = () => {
                   Acknowledge
                 </Button>
               </div>
-            </div>
-          </DrawerContent>
-        </Drawer>
-
-        {/* ══════════ AGENDA DRAWER ══════════ */}
-        <Drawer open={isAgendaOpen} onOpenChange={setIsAgendaOpen}>
-          {/* FIX: Set a explicit height and use flex column layout */}
-          <DrawerContent className="bg-[#0A0014]/95 backdrop-blur-xl border-t border-[#7B2FBE]/20 h-[90vh] flex flex-col">
-            
-            {/* Header: Fixed at top */}
-            <div className="mx-auto w-full max-w-lg px-4 pt-6">
-              <DrawerHeader className="flex flex-col items-start p-0">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#7B2FBE]/20 bg-[#1B002B]/30 mb-3">
-                  <Sparkles className="size-3 text-[#D776FF]" />
-                  <span className="text-[10px] tracking-[0.25em] text-[#D776FF]/80 font-semibold uppercase">
-                    Founder's Pit · Season 2026
-                  </span>
-                </div>
-                <DrawerTitle className="text-4xl font-black fp-title tracking-tighter leading-none mb-2">
-                  AGENDA
-                </DrawerTitle>
-                <p className="text-[10px] tracking-[0.25em] text-[#D776FF]/70 font-bold uppercase mb-4">
-                  Enter with a mindset · Exit as a founder
-                </p>
-              </DrawerHeader>
-            </div>
-
-            {/* Scrollable Area: Fills available space */}
-            <div className="flex-1 overflow-y-auto px-4 py-2">
-              <div className="mx-auto w-full max-w-lg">
-                <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-tight mb-4">
-                  THE MOST INTENSE{' '}
-                  <span className="fp-subtitle">STARTUP EXPERIENCE</span>{' '}
-                  ON CAMPUS!
-                </h2>
-
-                <p className="text-sm sm:text-base text-white/80 font-semibold leading-relaxed mb-3 text-center">
-                  It is a{' '}
-                  <span className="text-[#D776FF]">startup simulation</span>{' '}
-                  where you don't just think like a{' '}
-                  <span className="text-[#D776FF]">founder</span>{' '}
-                  you become{' '}
-                  <span className="text-[#D776FF]">one.</span>
-                </p>
-
-                <p className="text-center text-sm sm:text-base tracking-[0.3em] font-black text-white/90 uppercase mb-5">
-                  BID . BUILD . BATTLE
-                </p>
-
-                <p className="text-xs sm:text-sm text-white/45 leading-relaxed mb-4 text-center">
-                  Founder's Pit is not a typical college competition. It is a fully structured,{' '}
-                  <span className="text-white/70">gamified simulation</span> of what it actually feels like
-                  to build a startup — from identifying a problem, to building a product, surviving a business
-                  crisis, and pitching to investors — all within a single day.
-                </p>
-
-                <p className="text-xs sm:text-sm text-white/45 leading-relaxed mb-4 text-center">
-                  <span className="text-white/70">24 teams</span> of 1st and 2nd year students compete across{' '}
-                  <span className="text-white/70">5 high-pressure rounds</span>, making real decisions with
-                  virtual capital, adapting to live crises, and presenting their complete startup to a jury of
-                  industry professionals. No pre-built ideas. No shortcuts.{' '}
-                  <span className="text-white/70">Just raw thinking, real pressure, and one day to prove it.</span>
-                </p>
-
-                <p className="text-xs sm:text-sm text-white/45 leading-relaxed mb-6 text-center">
-                  It's not about the "perfect" idea — it's about the grit to adapt and the hustle to turn a
-                  raw concept into a powerhouse.
-                </p>
-
-                <div className="h-px bg-[#7B2FBE]/15 mb-6" />
-
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#7B2FBE]/20 bg-[#1B002B]/30 mb-4">
-                  <span className="text-[10px] tracking-[0.2em] text-[#D776FF]/60 font-medium uppercase">
-                    3-Phase Adrenaline Rush
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-black text-white tracking-tight mb-1">
-                  WHAT PARTICIPANTS{' '}
-                  <span className="fp-subtitle">WILL DO</span>
-                </h3>
-                <p className="text-[10px] tracking-[0.2em] text-[#D776FF]/60 font-bold uppercase mb-5">
-                  Inside the Pit
-                </p>
-
-                <div className="flex flex-col gap-3 mb-8">
-                  {[
-                    {
-                      phase: 'The Bid',
-                      desc: 'Strategically compete to claim the problem statement you want to solve.',
-                    },
-                    {
-                      phase: 'The Build',
-                      desc: 'Design your product, build a revenue model, and survive unexpected crisis scenarios.',
-                    },
-                    {
-                      phase: 'The Pitch',
-                      desc: 'Present your battle-tested startup to a panel of expert judges.',
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="fp-card rounded-2xl px-5 py-4 flex items-start gap-4" style={{ animation: 'none' }}>
-                      <div className="shrink-0 size-8 rounded-xl bg-gradient-to-br from-[#5E0C9F]/50 to-[#7B2FBE]/30 flex items-center justify-center">
-                        <span className="text-[10px] font-black text-[#D776FF]">0{i + 1}</span>
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[10px] tracking-[0.2em] text-[#D776FF] font-bold uppercase">
-                          {item.phase}
-                        </span>
-                        <span className="text-xs text-white/50 leading-relaxed">
-                          {item.desc}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Footer Button: Fixed at bottom */}
-            <div className="mx-auto w-full max-w-lg px-4 pb-8 pt-4">
-              <Button
-                onClick={() => setIsAgendaOpen(false)}
-                className="w-full fp-btn-primary text-white font-bold py-6 rounded-xl border-0"
-              >
-                Got it!
-              </Button>
             </div>
           </DrawerContent>
         </Drawer>
