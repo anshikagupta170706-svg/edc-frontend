@@ -213,11 +213,8 @@ export default function Live() {
                 </p>
               </div>
 
-              <div className="mt-5 grid gap-3 md:grid-cols-3">
-                <div className="rounded-xl border border-[#7B2FBE]/25 bg-[#0A0218] p-3">
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-zinc-500">Live clock</p>
-                  <p className="mt-1 text-xl font-semibold text-[#D776FF]">{formatClock(now)}</p>
-                </div>
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+
                 <div className="rounded-xl border border-[#7B2FBE]/25 bg-[#0A0218] p-3">
                   <p className="text-[11px] uppercase tracking-[0.15em] text-zinc-500">Countdown</p>
                   <p className={`mt-1 text-xl font-semibold ${eventFinished ? 'text-[#E0A6FF]' : 'text-[#EACBFF]'}`}>
