@@ -5,7 +5,7 @@
 //
 // Each member object structure:
 //   - name:        Display name
-//   - role:        Position title (e.g. 'Technical Team Head')
+//   - role:        Position title (e.g. 'Technical Team Lead')
 //   - department:  Team category (used for filtering)
 //   - year:        1 = 1st year (Associate), 2 = 2nd year (Executive)
 //                  Yeh field internal use ke liye hai (Heads vs Members)
@@ -26,16 +26,28 @@
 const teamData = [
   // ─────── CORE TEAM ───────
   {
-    name: 'Aditya Agarwal',
-    role: 'General Secretary',
+    name: 'Sahal Parvez',
+    role: 'President',
     department: 'Core Team',
     year: 2,
     branch: 'CSE-DS',
-    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/Aditya_Agarwal_ezqijs.jpg',
-    linkedin: 'https://www.linkedin.com/in/aditya-agarwal-a6855534b',
-    github: 'https://github.com/Aditya-ai204',
-    instagram: 'https://instagram.com/aditya_agarwal_2024',
-    quote: 'Great.',
+    image: 'https://res.cloudinary.com/dpphtbawg/image/upload/v1770752688/sahal_profile_ljwo5g.png',
+    linkedin: 'https://www.linkedin.com/in/sahal-parvez/',
+    github: '',
+    instagram: '',
+    quote: 'The Social Network (Timestamp: 1:51:06)',
+  },
+  {
+    name: 'Utkarsh Srivastava',
+    role: 'Vice - President',
+    department: 'Core Team',
+    year: 2,
+    branch: 'BRANCH_TBD',
+    image: 'https://res.cloudinary.com/dpphtbawg/image/upload/v1770752268/utkarsh-srivastava_dh0rfz.jpg',
+    linkedin: 'https://www.linkedin.com/in/utkarshsri1139/',
+    github: 'https://github.com/UtkarshSrivastava1139',
+    instagram: 'https://www.instagram.com/utkarshsri1139/',
+    quote: '',
   },
   {
     name: 'Krish Choudhary',
@@ -59,25 +71,25 @@ const teamData = [
     linkedin: 'https://linkedin.com/in/sameer-singla-1b7247348',
     github: 'https://github.com/alicoder123411',
     instagram: '',
-    quote: 'Excited to be part of EDC.',
+    quote: '',
+  },
+  {
+    name: 'Aditya Agarwal',
+    role: 'General Secretary',
+    department: 'Core Team',
+    year: 2,
+    branch: 'CSE-DS',
+    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/Aditya_Agarwal_ezqijs.jpg',
+    linkedin: 'https://www.linkedin.com/in/aditya-agarwal-a6855534b',
+    github: 'https://github.com/Aditya-ai204',
+    instagram: 'https://instagram.com/aditya_agarwal_2024',
+    quote: 'Great.',
   },
 
   // ─────── TECHNICAL TEAM ───────
   {
-    name: 'Harsh Verma',
-    role: 'Technical Team Member',
-    department: 'Technical Team',
-    year: 2,
-    branch: 'BRANCH_TBD',
-    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/1000010180_g496qx.jpg',
-    linkedin: 'https://www.linkedin.com/in/harsh-verma-156234325/',
-    github: 'https://github.com/hrshvv',
-    instagram: 'https://www.instagram.com/_hrrsh/',
-    quote: 'Excited to be part of EDC.',
-  },
-  {
     name: 'Ujjwal Kaushik',
-    role: 'Technical Team Head',
+    role: 'Technical Team Lead',
     department: 'Technical Team',
     year: 2,
     branch: 'CSE',
@@ -88,16 +100,16 @@ const teamData = [
     quote: 'You are too important to waste your life, and life is too short to lose to stress. So, think that you are Iron Man, Batman, Marcus Aurelius, or anyone else you admire and keep it going.',
   },
   {
-    name: 'Utkarsh Srivastava',
-    role: 'Technical Team Head',
+    name: 'Harsh Verma',
+    role: 'Technical Team Co-Lead',
     department: 'Technical Team',
     year: 2,
     branch: 'BRANCH_TBD',
-    image: 'https://res.cloudinary.com/dpphtbawg/image/upload/v1770752268/utkarsh-srivastava_dh0rfz.jpg',
-    linkedin: 'https://www.linkedin.com/in/utkarshsri1139/',
-    github: 'https://github.com/UtkarshSrivastava1139',
-    instagram: 'https://www.instagram.com/utkarshsri1139/',
-    quote: 'Excited to be part of EDC.',
+    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/1000010180_g496qx.jpg',
+    linkedin: 'https://www.linkedin.com/in/harsh-verma-156234325/',
+    github: 'https://github.com/hrshvv',
+    instagram: 'https://www.instagram.com/_hrrsh/',
+    quote: '',
   },
   {
     name: 'Aditya Singh',
@@ -109,7 +121,7 @@ const teamData = [
     linkedin: 'https://www.linkedin.com/in/aditya-singh-a95785278/',
     github: 'https://github.com/ryzenforsale',
     instagram: '',
-    quote: 'Excited to be part of EDC.',
+    quote: 'Good',
   },
   {
     name: 'Anshika Gupta',
@@ -140,12 +152,12 @@ const teamData = [
     role: 'Technical Team Member',
     department: 'Technical Team',
     year: 1,
-    branch: 'BRANCH_TBD',
+    branch: 'CSE-AIML',
     image: 'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_7963_-_Shubham_Verma_tgtz8o',
     linkedin: 'https://www.linkedin.com/in/its-me-shubham-verma',
     github: 'https://github.com/shubhamverma-devx',
     instagram: '',
-    quote: 'Excited to be part of EDC.',
+    quote: "Honestly applied to EDC thinking it would be just another society, probably boring, maybe useful for the resume. Founder's Pit changed that completely. The chaos, the late-night planning, watching people who didn't know each other a month ago suddenly run an entire event together, that's when it clicked for me. I'm not the loudest guy in the room, mostly the one observing from the side. But when something's about to break at the last minute, I'm usually there to fix it. Quiet, but present when it counts.",
   },
   {
     name: 'Vaishnavi Negi',
@@ -156,14 +168,14 @@ const teamData = [
     image: 'https://res.cloudinary.com/dumzfcdvx/image/upload/e_contrast:level_-18;type_sigmoidal/WhatsApp_Image_2026-03-22_at_16.31.09_ncagay.jpg',
     linkedin: 'https://www.linkedin.com/in/vaishnavinegii',
     github: 'https://github.com/negiigit',
-    instagram: 'https://www.instagram.com/__negii23__',
+    instagram: '',
     quote: 'It\'s crazy, innit?',
   },
 
   // ─────── OUTREACH TEAM ───────
   {
     name: 'Aryan Singh',
-    role: 'Outreach Team Head',
+    role: 'Outreach Team Lead',
     department: 'Outreach Team',
     year: 2,
     branch: 'CSE-DS',
@@ -175,7 +187,7 @@ const teamData = [
   },
   {
     name: 'Garvit Garg',
-    role: 'Outreach Team Co-Head',
+    role: 'Outreach Team Co-Lead',
     department: 'Outreach Team',
     year: 2,
     branch: 'IT',
@@ -184,18 +196,6 @@ const teamData = [
     github: 'https://github.com/Champboy18/',
     instagram: 'https://www.instagram.com/champboygg/',
     quote: 'Being a part of the EDC society has been a great learning experience for me. It helped me improve my teamwork, communication, and event management skills while interacting with creative and like-minded people. I also got exposure to entrepreneurship and new ideas through various activities and events.',
-  },
-  {
-    name: 'Sahal Parvez',
-    role: 'Outreach Team Head',
-    department: 'Outreach Team',
-    year: 2,
-    branch: 'BRANCH_TBD',
-    image: 'https://res.cloudinary.com/dpphtbawg/image/upload/v1770752688/sahal_profile_ljwo5g.png',
-    linkedin: '',
-    github: '',
-    instagram: '',
-    quote: 'Excited to be part of EDC.',
   },
   {
     name: 'Khushi Pandey',
@@ -236,28 +236,28 @@ const teamData = [
 
   // ─────── DESIGN TEAM ───────
   {
+    name: 'Kartikey Varshney',
+    role: 'Design Team Lead',
+    department: 'Design Team',
+    year: 2,
+    branch: 'CSE-DS',
+    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/v1758553718/kartikay-varshney_lyarqq.jpg',
+    linkedin: 'https://www.linkedin.com/in/kartikey-varshney-23175133a',
+    github: 'https://github.com/kartikeyv-design',
+    instagram: 'https://instagram.com/krish.var',
+    quote: 'My experience with Entrepreneurship Development Cell has been really amazing and full of learning. As the Design Team Lead, I got the chance to work on multiple events and handle responsibilities beyond just designing. From managing creatives and coordinating with team members to handling last-minute changes during events, the journey has taught me a lot. There were stressful moments and tight deadlines, but working together with the team and seeing the final output during events always made it worth it. One thing I really enjoyed was guiding the team creatively and making sure our work matched the vision of each event. Overall, EDC helped me grow both creatively and personally, and the experience has been genuinely memorable for me.',
+  },
+  {
     name: 'Daarim',
-    role: 'Design Team Member',
+    role: 'Design Team Executive Member',
     department: 'Design Team',
     year: 2,
     branch: 'CSE-DS',
     image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105139/Daarim_wxbs4h.jpg',
     linkedin: 'https://www.linkedin.com/in/daarim/',
-    github: 'https://github.com/Daarim1214',
+    github: '',
     instagram: 'https://instagram.com/daaarim_14',
     quote: 'EDC started as a chapter, slowly became part of the personality. Learned that entrepreneurship isn’t just startups and pitches — it’s confidence, people, creativity, and taking initiative when nobody asks to. Still figuring things out, but enjoying the process.',
-  },
-  {
-    name: 'Kartikay Varshney',
-    role: 'Design Team Head',
-    department: 'Design Team',
-    year: 2,
-    branch: 'BRANCH_TBD',
-    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/v1758553718/kartikay-varshney_lyarqq.jpg',
-    linkedin: 'https://www.linkedin.com/in/kartikey-varshney-23175133a',
-    github: 'https://github.com/kartikeyv-design',
-    instagram: 'https://instagram.com/krish.var',
-    quote: 'Excited to be part of EDC.',
   },
   {
     name: 'Aditi Dayal',
@@ -303,8 +303,8 @@ const teamData = [
     branch: 'ECE',
     image: 'https://res.cloudinary.com/dumzfcdvx/image/upload/Untitled_design_20260214_232116_0000_-_Janvee_Sagar_urnylk',
     linkedin: 'https://www.linkedin.com/in/janvee-sagar-4818b1378',
-    github: 'https://github.com/janvee-core03',
-    instagram: 'https://www.instagram.com/thejanvee.sagarr',
+    github: '',
+    instagram: '',
     quote: 'It has been very exciting, full of learning new things and having fun as well. The teams are very supportive with each other, we teach and learn new things everytime we sit together.',
   },
   {
@@ -312,12 +312,12 @@ const teamData = [
     role: 'Design Team Member',
     department: 'Design Team',
     year: 1,
-    branch: 'BRANCH_TBD',
+    branch: 'CSE-AIML',
     image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582234/image_-_Lakshita_ckaotj.jpg',
     linkedin: 'https://www.linkedin.com/in/lakshitarawat/',
-    github: 'https://github.com/lakshita-rawat',
-    instagram: '',
-    quote: 'Excited to be part of EDC.',
+    github: 'https://github.com/la-kshita',
+    instagram: 'https://www.instagram.com/lax.kshita?igsh=cmFxOTd0cjE1bzhs',
+    quote: 'Hands down, would join it again',
   },
   {
     name: 'Poorva Sanan',
@@ -329,13 +329,25 @@ const teamData = [
     linkedin: 'https://www.linkedin.com/in/poorva-sanan-b3098136b/',
     github: 'https://github.com/poorvasanan',
     instagram: 'https://www.instagram.com/oyee_poorvaaa',
-    quote: '"Fuelled by fresh ideas, good design, and a lot of curiosity.',
+    quote: 'Fuelled by fresh ideas, good design, and a lot of curiosity.',
+  },
+  {
+    name: 'Mauli Singh',
+    role: 'Design Team Member',
+    department: 'Design Team',
+    year: 1,
+    branch: 'ECE',
+    image: '',
+    linkedin: 'http://linkedin.com/in/mauli-singh-380941373/',
+    github: 'http://github.com/mauli-05/',
+    instagram: 'http://instagram.com/mauli.05/',
+    quote: 'Being surrounded by so many talented members of EDC inspires me to be creative and innovative .',
   },
 
   // ─────── CONTENT AND DOCUMENTATION TEAM ───────
   {
     name: 'Kalyani Chaunwal',
-    role: 'Content and Documentation Team Head',
+    role: 'Content and Documentation Team Lead',
     department: 'Content and Documentation Team',
     year: 2,
     branch: 'CSE',
@@ -347,7 +359,7 @@ const teamData = [
   },
   {
     name: 'Yash Gupta',
-    role: 'Content and Documentation Team Co-Head',
+    role: 'Content and Documentation Team Co-Lead',
     department: 'Content and Documentation Team',
     year: 2,
     branch: 'CSE-DS',
@@ -421,7 +433,7 @@ const teamData = [
   },
   {
     name: 'Panna Tyagi',
-    role: 'Liaisoning Team Head',
+    role: 'Liaisoning Team Lead',
     department: 'Liaisoning Team',
     year: 2,
     branch: 'CSE',
@@ -506,8 +518,20 @@ const teamData = [
 
   // ─────── MARKETING TEAM ───────
   {
+    name: 'Luv Mangla',
+    role: 'Marketing Team Lead',
+    department: 'Marketing Team',
+    year: 2,
+    branch: 'CSE',
+    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105141/LM_toe4zm.jpg',
+    linkedin: 'https://www.linkedin.com/in/luv-mangla/',
+    github: '',
+    instagram: '',
+    quote: 'Somewhere between deadlines, dreams, and late-night ideas - I found myself.',
+  },
+  {
     name: 'Isha Gupta',
-    role: 'Marketing Team Co-Head',
+    role: 'Marketing Team Co-Lead',
     department: 'Marketing Team',
     year: 2,
     branch: 'IT',
@@ -516,18 +540,6 @@ const teamData = [
     github: 'https://github.com/ishaa427',
     instagram: 'https://www.instagram.com/_i.sh_a_',
     quote: 'My experience with EDC has been really good so far. The events are fun, interactive, and genuinely motivating. I’ve enjoyed how EDC creates an environment where students can learn about entrepreneurship in a practical and engaging way while also meeting like-minded people. The recent “Founder’s Pit” event stood out to me because it gave a real insight into how founders think, pitch ideas, and tackle challenges. It felt less like a formal session and more like a meaningful learning experience.',
-  },
-  {
-    name: 'Luv Mangla',
-    role: 'Marketing Team Head',
-    department: 'Marketing Team',
-    year: 2,
-    branch: 'CSE',
-    image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105141/LM_toe4zm.jpg',
-    linkedin: 'https://www.linkedin.com/in/luv-mangla/',
-    github: '',
-    instagram: 'https://www.instagram.com/luvmangla_05/',
-    quote: 'Excited to be part of EDC.',
   },
   {
     name: 'Aveeshi Kapil',
@@ -569,7 +581,7 @@ const teamData = [
   // ─────── EVENTS AND TRAINING TEAM ───────
   {
     name: 'Aaish Zaidi',
-    role: 'Events and Training Team Head',
+    role: 'Events and Training Team Lead',
     department: 'Events and Training Team',
     year: 2,
     branch: 'BRANCH_TBD',
@@ -655,7 +667,7 @@ const teamData = [
   // ─────── MEDIA AND NETWORKING TEAM ───────
   {
     name: 'Lavanya Singh',
-    role: 'Media and Networking Team Head',
+    role: 'Media and Networking Team Lead',
     department: 'Media and Networking Team',
     year: 2,
     branch: 'CSE-DS',
