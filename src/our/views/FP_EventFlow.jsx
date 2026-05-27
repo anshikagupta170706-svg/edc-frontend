@@ -327,69 +327,7 @@ const ParticipationReach = () => {
   );
 };
 
-/* ── 5. DIGNITARIES ───────────────────────────────── */
-const Dignitaries = () => {
-  const dignitaries = [
-    { name: 'Dr. H.R. Mahadevaswamy', role: 'Vice Chancellor', org: 'JSS University, Noida' },
-    { name: 'Dr. T.G. Mamatha', role: 'Registrar', org: 'JSS University, Noida' },
-    { name: 'Dr. B. Manoj Kumar', role: 'Principal, JSSATEN & Dean Academics', org: 'JSSUN' },
-    { name: 'Dr. R.S. Jagadish', role: 'Dean, Student Welfare', org: 'JSSUN' },
-    { name: 'Dr. Nilani P.', role: 'Dean, BQS', org: 'JSSUN' },
-    { name: 'Dr. Praveen T.K.', role: 'Principal', org: 'School of Pharmacy' },
-    { name: 'Dr. S.S. Shirur', role: 'Controller of Examinations', org: 'JSSUN' },
-  ];
-
-  const coordinators = [
-    { name: 'Dr. Nishi Sharma', role: 'Faculty Coordinator', org: 'EDC, JSSUN' },
-    { name: 'Dr. Aashima Srivastava', role: 'Faculty Coordinator', org: 'EDC, JSSUN' },
-  ];
-
-  return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 bg-[#000000] border-t border-[#7B2FBE]/20 relative overflow-hidden">
-      <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none" />
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-[#D776FF] font-bold tracking-[.22em] uppercase text-xs">Leadership & Oversight</span>
-          <h2 className="text-4xl sm:text-6xl font-black text-white mt-4">The <span className="fp-subtitle">Dignitaries</span></h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
-          {dignitaries.map((d, i) => (
-            <div key={i} className="fp-card p-5 rounded-2xl flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-              <div className="size-11 rounded-xl bg-gradient-to-br from-[#5E0C9F] to-[#7B2FBE] flex items-center justify-center shrink-0 text-white font-black text-sm shadow-[0_0_15px_rgba(123,47,190,.4)]">
-                {d.name.split(' ').slice(-1)[0][0]}
-              </div>
-              <div className="min-w-0">
-                <h4 className="font-black text-white text-sm leading-tight truncate group-hover:text-[#D776FF] transition-colors">{d.name}</h4>
-                <p className="text-[#D776FF]/70 text-xs mt-0.5 leading-tight">{d.role}</p>
-                <p className="text-white/35 text-xs">{d.org}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mb-4">
-          <h3 className="text-xl font-black text-white/70 text-center mb-6 tracking-widest uppercase text-sm">Faculty Coordinators</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {coordinators.map((c, i) => (
-              <div key={i} className="fp-card px-6 py-4 rounded-2xl flex items-center gap-4 group hover:-translate-y-1 transition-transform duration-300">
-                <div className="size-11 rounded-xl bg-gradient-to-br from-[#3D006B] to-[#5E0C9F] flex items-center justify-center shrink-0 text-white font-black text-sm">
-                  {c.name.split(' ').slice(-1)[0][0]}
-                </div>
-                <div>
-                  <h4 className="font-black text-white text-sm group-hover:text-[#D776FF] transition-colors">{c.name}</h4>
-                  <p className="text-[#D776FF]/70 text-xs">{c.role} · {c.org}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ── 6. JUDGES & MENTORS ──────────────────────────── */
+/* ── 5. JUDGES & MENTORS ──────────────────────────── */
 const JudgesMentors = () => {
   const judges = [
     {
@@ -398,6 +336,8 @@ const JudgesMentors = () => {
       subtitle: 'Founder & Principal Consultant — Shefcon Strategic Consulting',
       initials: 'MS',
       color: 'from-[#5E0C9F] to-[#7B2FBE]',
+      // ↓ Replace this src with the actual image URL when ready
+      photo: null,
     },
     {
       name: 'Mr. Sachin Jha',
@@ -405,6 +345,7 @@ const JudgesMentors = () => {
       subtitle: 'Starkseek',
       initials: 'SJ',
       color: 'from-[#7B2FBE] to-[#904EB0]',
+      photo: null,
     },
     {
       name: 'Mr. Vikas Saroj',
@@ -412,6 +353,7 @@ const JudgesMentors = () => {
       subtitle: 'Zoho Certified Developer · Ex. President EDC JSS',
       initials: 'VS',
       color: 'from-[#3D006B] to-[#5E0C9F]',
+      photo: null,
     },
   ];
 
@@ -422,6 +364,7 @@ const JudgesMentors = () => {
       subtitle: 'Octro Inc.',
       initials: 'MP',
       color: 'from-[#5E0C9F] to-[#8B3CBF]',
+      photo: null,
     },
     {
       name: 'Mr. Moksha Kohli',
@@ -429,6 +372,7 @@ const JudgesMentors = () => {
       subtitle: 'Genesis',
       initials: 'MK',
       color: 'from-[#6A0FAD] to-[#9B4EC8]',
+      photo: null,
     },
     {
       name: 'Ms. Tanisha Bansal',
@@ -436,6 +380,7 @@ const JudgesMentors = () => {
       subtitle: '@SITA',
       initials: 'TB',
       color: 'from-[#4A0080] to-[#7B2FBE]',
+      photo: null,
     },
   ];
 
@@ -446,9 +391,32 @@ const JudgesMentors = () => {
           {role}
         </span>
       </div>
-      <div className={`size-16 rounded-2xl bg-gradient-to-br ${person.color} flex items-center justify-center mb-5 text-white font-black text-xl shadow-[0_0_25px_rgba(123,47,190,.4)]`}>
-        {person.initials}
+
+      {/* Profile photo / placeholder */}
+      <div className="mb-5 relative">
+        {person.photo ? (
+          <img
+            src={person.photo}
+            alt={person.name}
+            className="w-20 h-20 rounded-2xl object-cover object-top shadow-[0_0_25px_rgba(123,47,190,.4)]"
+          />
+        ) : (
+          <div
+            className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${person.color} flex flex-col items-center justify-center shadow-[0_0_25px_rgba(123,47,190,.4)] border-2 border-dashed border-white/20 relative overflow-hidden group-hover:border-[#D776FF]/50 transition-colors`}
+            title="Replace person.photo with an image URL to show the photo here"
+          >
+            {/* Camera icon hint */}
+            <svg className="size-6 text-white/30 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+            </svg>
+            <span className="text-white/25 text-[9px] font-bold tracking-wider uppercase leading-none">Photo</span>
+            {/* Initials watermark */}
+            <span className="absolute bottom-1.5 right-2 text-white/20 font-black text-lg leading-none select-none">{person.initials}</span>
+          </div>
+        )}
       </div>
+
       <h3 className="text-xl font-black text-white group-hover:text-[#D776FF] transition-colors">{person.name}</h3>
       <p className="text-[#D776FF]/80 text-xs font-semibold mt-1 mb-1 tracking-wide">{person.title}</p>
       <p className="text-white/40 text-xs">{person.subtitle}</p>
@@ -486,7 +454,7 @@ const JudgesMentors = () => {
   );
 };
 
-/* ── 7. EVENT FLOW ────────────────────────────────── */
+/* ── 6. EVENT FLOW ────────────────────────────────── */
 const TheGauntlet = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start center', 'end center'] });
@@ -674,7 +642,6 @@ export default function FP_EventPage() {
         <About />
         <TheEdge />
         <ParticipationReach />
-        <Dignitaries />
         <JudgesMentors />
         <TheGauntlet />
         <Footer />
