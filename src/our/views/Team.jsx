@@ -1,13 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import TeamCard from '../components/TeamCard';
 import Footer from '../components/Footer';
+import teamData from '../data/teamData';
 
+// ============================================================
+// TEAM PAGE — EDC JSSUN
+// ============================================================
+// Yeh page saare team members ko dikhata hai, department-wise grouped.
+// Filter bar se user specific team filter kar sakta hai.
+//
+// Structure (top to bottom):
+//   1. Hero section (heading + stats)
+//   2. Filter chips bar
+//   3. Faculty Coordinators section
+//   4. Department-wise sections (Core, Technical, Outreach, etc.)
+//   5. Footer
+//
+// Har department section me:
+//   - Section header (number + title + count)
+//   - "Team Heads" sub-section (2nd year members with Head/Co-Head roles)
+//   - "Associate Members" sub-section (1st year members)
+// ============================================================
 const Team = () => {
   const location = useLocation();
   const [activeFilter, setActiveFilter] = useState('All');
 
+  // ──────────────────────────────────────────────────────
+  // Agar URL me ?filter=Technical wagaira hai to woh apply karo
+  // (existing functionality preserve ki hai)
+  // ──────────────────────────────────────────────────────
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const filter = searchParams.get('filter');
@@ -16,7 +39,10 @@ const Team = () => {
     }
   }, [location.search]);
 
-  // Faculty coordinators data
+  // ──────────────────────────────────────────────────────
+  // FACULTY COORDINATORS — separate data because format alag hai
+  // (no quote, no year, special card style)
+  // ──────────────────────────────────────────────────────
   const facultyCoordinators = [
     {
       name: 'Dr. Nishi Sharma',
@@ -24,7 +50,6 @@ const Team = () => {
       image:
         'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1760033447/1747474363758_srqubg.jpg',
       linkedin: 'https://www.linkedin.com/in/dr-nishi-sharma-8aab36159/',
-      github: '',
     },
     {
       name: 'Dr. Ashima Shrivastava',
@@ -32,653 +57,364 @@ const Team = () => {
       image:
         'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1760033446/1655353630059_aovzf3.jpg',
       linkedin: 'https://www.linkedin.com/in/dr-ashima-srivastava-215295135/',
-      github: '',
     },
   ];
 
-  // Team data with department information
-  const teamData = [
-    //2ND YEAR
-    {
-      name: 'Sameer Singla',
-      role: 'Joint Secretary',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1758553253/Sameer_singla_-min_tmbxss.jpg',
-      department: 'Core Team',
-      instagram: '',
-      linkedin: 'https://linkedin.com/in/sameer-singla-1b7247348',
-      github: 'https://github.com/alicoder123411', year: 2
-    },
-    {
-      name: 'Aditya Agarwal',
-      role: 'General Secretary',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/Aditya_Agarwal_ezqijs.jpg',
-      department: 'Core Team',
-      instagram: 'https://instagram.com/aditya_agarwal_2024',
-      linkedin:
-        'https://www.linkedin.com/in/aditya-agarwal-a6855534b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: 'https://github.com/Aditya-ai204', year: 2
-    },
-    {
-      name: 'Utkarsh Srivastava',
-      role: 'Technical Team Head',
-      image:
-        'https://res.cloudinary.com/dpphtbawg/image/upload/v1770752268/utkarsh-srivastava_dh0rfz.jpg',
-      department: 'Technical Team',
-      instagram: 'https://www.instagram.com/utkarshsri1139/',
-      linkedin: 'https://www.linkedin.com/in/utkarshsri1139/',
-      github: 'https://github.com/UtkarshSrivastava1139', year: 2
-    },
-    {
-      name: 'Harsh Verma',
-      role: 'Technical Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/1000010180_g496qx.jpg',
-      department: 'Technical Team',
-      instagram: 'https://www.instagram.com/_hrrsh/',
-      linkedin: 'https://www.linkedin.com/in/harsh-verma-156234325/',
-      github: 'https://github.com/hrshvv', year: 2
-    },
-    {
-      name: 'Ujjwal Kaushik',
-      role: 'Technical Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105141/Ujjwal_Kaushik_qqlfwq.jpg',
-      department: 'Technical Team',
-      instagram: 'https://instagram.com/ujjwal_insane',
-      linkedin: 'https://www.linkedin.com/in/kaushikujjwal/',
-      github: 'https://github.com/Ujjwal-Qubit', year: 2
-    },
-    {
-      name: 'Sahal Parvez',
-      role: 'Outreach Team Head',
-      image:
-        'https://res.cloudinary.com/dpphtbawg/image/upload/v1770752688/sahal_profile_ljwo5g.png',
-      department: 'Outreach Team',
-      instagram: '',
-      linkedin: '',
-      github: '', year: 2
-    },
-    {
-      name: 'Kartikay Varshney',
-      role: 'Design Team Head',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/v1758553718/kartikay-varshney_lyarqq.jpg',
-      department: 'Design Team',
-      instagram: 'https://instagram.com/krish.var',
-      linkedin: 'https://www.linkedin.com/in/kartikey-varshney-23175133a',
-      github: '', year: 2
-    },
-    {
-      name: 'Krish Chaudhary',
-      role: 'Design Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1758477584/krish-ch_bjzl2n.jpg',
-      department: 'Design Team',
-      instagram: 'https://instagram.com/krisc.w',
-      linkedin: 'https://www.linkedin.com/in/krish-choudhary-72a176317',
-      github: '', year: 2
-    },
-    {
-      name: 'Daarim',
-      role: 'Design Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105139/Daarim_wxbs4h.jpg',
-      department: 'Design Team',
-      instagram: 'https://instagram.com/daaarim_14',
-      linkedin: 'https://www.linkedin.com/in/daarim/',
-      github: 'https://github.com/Daarim1214', year: 2
-    },
-    {
-      name: 'Aryan Singh',
-      role: 'Design Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/v1758552749/aryan-singh_katof2.jpg',
-      department: 'Design Team',
-      instagram: 'https://instagram.com/_aryan_gulia ',
-      linkedin:
-        'https://www.linkedin.com/in/aryan-singh-2a2a53385?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: '', year: 2
-    },
-    {
-      name: 'Kalyani Chaunwal',
-      role: 'Content and Documentation Team Head',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105140/Kalyani_m8spfn.jpg',
-      department: 'Content and Documentation Team',
-      instagram: 'https://instagram.com/Itskalyanic',
-      linkedin: 'https://www.linkedin.com/in/kalyani-chaunwal-a8801b273/',
-      github: '', year: 2
-    },
-    {
-      name: 'Panna Tyagi',
-      role: 'Liaisoning Team Head',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105140/20250514_121810_wrahh6.jpg',
-      department: 'Liaisoning Team',
-      instagram: 'https://instagram.com/panna.tyagii',
-      linkedin:
-        'https://www.linkedin.com/in/panna-tyagi-a1263b29b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: 'https://github.com/tyagipanna', year: 2
-    },
-    {
-      name: 'Daksh Goyal',
-      role: 'Liaisoning Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1758477946/daksh-goyal_o3qfce.png',
-      department: 'Liaisoning Team',
-      instagram: 'https://instagram.com/daksh._.goyal7',
-      linkedin:
-        'https://www.linkedin.com/in/daksh-goyal-334830324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: '', year: 2
-    },
-    {
-      name: 'Parth Gahlot',
-      role: 'Liaisoning Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/v1758921675/part-gahlot_rgotzo.jpg',
-      department: 'Liaisoning Team',
-      instagram: '',
-      linkedin: '',
-      github: '', year: 2
-    },
-    {
-      name: 'Luv Mangla',
-      role: 'Marketing Team Head',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105141/LM_toe4zm.jpg',
-      department: 'Marketing Team',
-      instagram: '',
-      linkedin: '',
-      github: '', year: 2
-    },
-    {
-      name: 'Isha',
-      role: 'Marketing Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105140/IMG_1323_gfjhut.jpg',
-      department: 'Marketing Team',
-      instagram:
-        'https://www.instagram.com/_i.sh_a_?igsh=MWtmdnBvaGMwbzd1Nw%3D%3D&utm_source=qr',
-      linkedin:
-        'https://www.linkedin.com/in/isha-gupta-821873338?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-      github: '', year: 2
-    },
-    {
-      name: 'Garvit Garg',
-      role: 'Marketing Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1758478100/garvit-garg_hzyg7d.jpg',
-      department: 'Marketing Team',
-      instagram: '',
-      linkedin: '',
-      github: '', year: 2
-    },
-    {
-      name: 'Aaish Zaidi',
-      role: 'Events and Training Team Head',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1758478100/aaish-zaidi_wsi1to.jpg',
-      department: 'Events and Training Team',
-      instagram: 'https://instagram.com/aaish_7_zaidi',
-      linkedin:
-        'https://www.linkedin.com/in/aaish-abbas-zaidi-574082312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: '', year: 2
-    },
-    {
-      name: 'Krish Bhardwaj',
-      role: 'Events and Training Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1758563806/krish-bhardhwaj_xpfhce.jpg',
-      department: 'Events and Training Team',
-      instagram: '',
-      linkedin: '',
-      github: '', year: 2
-    },
-    {
-      name: 'Shashank Sahu',
-      role: 'Events and Training Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105140/IMG_20241215_200355_826_lqudce.webp',
-      department: 'Events and Training Team',
-      instagram: 'https://instagram.com/i.m.shashank_01',
-      linkedin: 'http://www.linkedin.com/in/shashank-sahu-985845312',
-      github: 'https://github.com/Shashanksahu01', year: 2
-    },
-    {
-      name: 'Anushka Srivastava',
-      role: 'Events and Training Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105138/Anushka_Srivastava_pdyof8.jpg',
-      department: 'Events and Training Team',
-      instagram: 'https://instagram.com/Anushka.a_28',
-      linkedin:
-        'https://www.linkedin.com/in/anushka-ashish-213787373?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: '', year: 2
-    },
-    {
-      name: 'Lavanya Singh',
-      role: 'Media and Networking Team Member',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1757105141/Lavanya_Singh_xv5dih.jpg',
-      department: 'Media and Networking Team',
-      instagram: 'https://instagram.com/Lavy.xoxo',
-      linkedin:
-        'https://www.linkedin.com/in/lavanya-singh-490492330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: '', year: 2
-    },
-
-
-    //1ST YEAR
-    {
-      name: 'Shriti Gupta',
-      role: 'Content and Documentation Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/Imagine_18050424389604601_-_Shriti_Gupta_zns5pf',
-      department: 'Content and Documentation Team',
-      instagram: 'https://www.instagram.com/shritigupta__07/ ',
-      linkedin:
-        'https://www.linkedin.com/in/shriti-gupta-40a0a9372/',
-      github: 'https://github.com/shritigupta007-alt', year: 1
-    },
-    {
-      name: 'Tanushi Sharma',
-      role: 'Content and Documentation Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/Screenshot_2026-02-14-23-09-35-86_6012fa4d4ddec268fc5c7112cbb265e7_-_Tanushi_Sharma_ruz3v5',
-      department: 'Content and Documentation Team',
-      instagram: '',
-      linkedin:
-        '',
-      github: '', year: 1
-    },
-    {
-      name: 'Bhargav Wariyal',
-      role: 'Content and Documentation Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/17710879106835359238193069224458_-_Bhargav_Wariyal_xasyh4',
-      department: 'Content and Documentation Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/bhargav-wariyal-609a4834b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      github: '', year: 1
-    },
-    {
-      name: 'Samiya Shaikh',
-      role: 'Content and Documentation Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582181/IMG-20260208-WA0016_-_Samiya_shaikh_unznao.jpg',
-      department: 'Content and Documentation Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/samiya-shaikh-700275353/',
-      github: '', year: 1
-    },
-    {
-      name: 'Alabhya Mehrotra',
-      role: 'Design Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG-20260217-WA0016_-_Alabhya_Mehrotra_uqd1hi',
-      department: 'Design Team',
-      instagram: ' ',
-      linkedin:
-        'https://www.linkedin.com/in/alabhya-mehrotra-5525a4370',
-      github: '', year: 1
-    },
-    {
-      name: 'Anvita Sameer',
-      role: 'Design Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/f_auto,c_auto,h_600,w_600/Anvita-_EDC_pic_-_Anvita_qkiwk6.heic',
-      department: 'Design Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/anvita-sameer-48b2a3386/',
-      github: '', year: 1
-    },
-    {
-      name: 'Janvee Sagar',
-      role: 'Design Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/Untitled_design_20260214_232116_0000_-_Janvee_Sagar_urnylk',
-      department: 'Design Team',
-      instagram: 'https://www.instagram.com/thejanvee.sagarr?igsh=Mzh4aTdyOGRzcnBp',
-      linkedin:
-        'https://www.linkedin.com/in/janvee-sagar-4818b1378?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: 'https://github.com/janvee-core03', year: 1
-    },
-    {
-      name: 'Lakshita Rawat',
-      role: 'Design Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582234/image_-_Lakshita_ckaotj.jpg',
-      department: 'Design Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/lakshitarawat/',
-      github: 'https://github.com/lakshita-rawat', year: 1
-    },
-    {
-      name: 'Poorva Sanan',
-      role: 'Design Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582234/IMG_20260213_205444_-_Poorva_Sanan_qh5qpw.jpg',
-      department: 'Design Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/poorva-sanan-b3098136b/',
-      github: '', year: 1
-    },
-    {
-      name: 'Aayushi Pandey',
-      role: 'Events and Training Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775581917/Screenshot_20240612_190043_Drive_-_Aayushi_Pandey_oqj6v3.jpg',
-      department: 'Events and Training Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/aayushi-pandey-7251bb376/',
-      github: '', year: 1
-    },
-    {
-      name: 'Samir',
-      role: 'Events and Training Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582233/IMG_20260213_205015_-_SAMIR_ger40e.jpg',
-      department: 'Events and Training Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/samir-roy-896878320/',
-      github: '', year: 1
-    },
-    {
-      name: 'Harshpreet Kaur',
-      role: 'Liaisoning Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG-20250913-WA0135_-_Harshpreet_Kaur_reom6d',
-      department: 'Liaisoning Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/harshpreet-kaur-480889375?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      github: '', year: 1
-    },
-    {
-      name: 'Varuni Kalra',
-      role: 'Liaisoning Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/20251206_140218_-_Varuni_Kalra_jerfh4',
-      department: 'Liaisoning Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/varuni-kalra-721146379?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      github: '', year: 1
-    },
-    {
-      name: 'Yovika Arora',
-      role: 'Liaisoning Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_3757_-_Yovika_Arora_xucsxi',
-      department: 'Liaisoning Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/yovika-arora-a461a638b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-      github: '', year: 1
-    },
-    {
-      name: 'Purti Jain',
-      role: 'Liaisoning Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775581750/IMG_20260205_183739533_-_Purti_Jain_fyxnjw.jpg',
-      department: 'Liaisoning Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/purti-jain-91292337b/',
-      github: '', year: 1
-    },
-    {
-      name: 'Navya Vishwakarma',
-      role: 'Liaisoning Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582228/IMG_20260213_125318_-_Navya_Vishwakarma_zolvse.jpg',
-      department: 'Liaisoning Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/navya-vishwakarma/',
-      github: 'https://github.com/navyavishwakarma', year: 1
-    },
-    {
-      name: 'Aveeshi Kapil',
-      role: 'Marketing Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG-20251204-WA0116_1_-_Aveeshi_Kapil_jgczvo',
-      department: 'Marketing Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/aveeshi-k-a9519a370/',
-      github: 'https://github.com/vizzie97', year: 1
-    },
-    {
-      name: 'Raghavi Shivhare',
-      role: 'Marketing Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_6852_-_RAGHAVI_SHIVHARE_brezyx',
-      department: 'Marketing Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/raghavi-shivhare-93693b364?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
-      github: 'https://github.com/raghavishivhare-jpg', year: 1
-    },
-    {
-      name: 'Khushi Pandey',
-      role: 'Outreach Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_20250722_165850_752_-_Khushi_Pandey_hlsyks',
-      department: 'Outreach Team',
-      instagram: 'https://www.instagram.com/def_not_haaapppyyyy?igsh=MXRieXY3Z3Jna2xybw==',
-      linkedin:
-        'https://www.linkedin.com/in/khushipandey04?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-      github: '', year: 1
-    },
-    {
-      name: 'Shivanshi Srivastava',
-      role: 'Outreach Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582226/IMG-20250504-WA0053_2_-_Shivanshi_Srivastava_xhdcno.jpg',
-      department: 'Outreach Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/shivanshi-srivastava07/',
-      github: 'https://github.com/shivanshis15', year: 1
-    },
-    {
-      name: 'Manshi Parmar',
-      role: 'Outreach Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582227/IMG_20260213_132744_-_Manshi_abpluh.jpg',
-      department: 'Outreach Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/manshiparmar7/',
-      github: '', year: 1
-    },
-    {
-      name: 'Mritunjay Tiwari',
-      role: 'Media and Networking Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_5842_-_Nihal_Tiwari_lcntgi',
-      department: 'Media and Networking Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/mrityunjay-tiwari-6a8914399?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
-      github: '', year: 1
-    },
-    {
-      name: 'Rounak Sheera',
-      role: 'Media and Networking Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_20260206_174906_-_rounak_sheera_nbe5az',
-      department: 'Media and Networking Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/rounak-sheera-b96ba337a?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-      github: '', year: 1
-    },
-    {
-      name: 'Arshita Soni',
-      role: 'Media and Networking Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/a72dd94d-d44c-46c4-af6a-660efbfc071a_-_Arshita_Soni_avtyne',
-      department: 'Media and Networking Team',
-      instagram: 'https://www.instagram.com/_ar.shitaa?igsh=MW05N253cnNxMjBvaA%3D%3D&utm_source=qr',
-      linkedin:
-        'https://www.linkedin.com/in/arshita-soni-083896380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-      github: 'https://share.google/qUZNBl9JCQIHU8VdC', year: 1
-    },
-    {
-      name: 'Shubham Verma',
-      role: 'Technical Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/IMG_7963_-_Shubham_Verma_tgtz8o',
-      department: 'Technical Team',
-      instagram: '',
-      linkedin:
-        'https://www.linkedin.com/in/its-me-shubham-verma?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-      github: 'https://github.com/shubhamverma-devx', year: 1
-    },
-    {
-      name: 'Vaishnavi Negi',
-      role: 'Technical Team Member',
-      image:
-        'https://res.cloudinary.com/dumzfcdvx/image/upload/e_contrast:level_-18;type_sigmoidal/WhatsApp_Image_2026-03-22_at_16.31.09_ncagay.jpg',
-      department: 'Technical Team',
-      instagram: 'https://www.instagram.com/__negii23__?igsh=OWtoamt0Znp6cnEw',
-      linkedin:
-        'https://www.linkedin.com/in/vaishnavinegii',
-      github: 'https://github.com/negiigit', year: 1
-    },
-    {
-      name: 'Rishabh Kumar',
-      role: 'Technical Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775581819/RI_PHOTO_-_Rishabh_Kumar_pnubta.jpg',
-      department: 'Technical Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/rishabh-k-ab7596378/',
-      github: '', year: 1
-    },
-    {
-      name: 'Aditya Singh',
-      role: 'Technical Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582221/IMG_20260201_134720_-_aditya_mpqqvk.jpg',
-      department: 'Technical Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/aditya-singh-a95785278/',
-      github: 'https://github.com/ryzenforsale', year: 1
-    },
-    {
-      name: 'Anshika Gupta',
-      role: 'Technical Team Member',
-      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/q_auto/f_auto/v1775582234/Photo_from_Anshika_Gupta_-_Anshika_Gupta_mwcs3n.jpg',
-      department: 'Technical Team',
-      instagram: '',
-      linkedin: 'https://www.linkedin.com/in/anshika-gupta-0708bb31b/',
-      github: 'https://github.com/anshikagupta170706', year: 1
-    },
-  ];
-
-  const getFilteredMembers = () => {
-    if (activeFilter === 'All') return teamData;
-    return teamData.filter(
-      member =>
-        member.department.trim().toLowerCase() ===
-        activeFilter.trim().toLowerCase()
-    );
-  };
-
-  const filteredTeam = getFilteredMembers();
-  const executiveMembers = filteredTeam.filter(m => m.year === 2);
-  const associateMembers = filteredTeam.filter(m => m.year === 1);
-
-  const showFacultyCoordinators =
-    activeFilter === 'All' || activeFilter === 'Faculty Coordinators';
-
-  const MemberSection = ({ title, members, badge, badgeColor, centered = false }) => {
-    if (members.length === 0) return null;
-    return (
-      <div className="space-y-4">
-        <div className="flex items-center gap-3 px-4">
-          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">
-            {title}
-          </h3>
-          <span className={`text-xs font-medium px-2.5 py-0.5 rounded-full whitespace-nowrap ${badgeColor}`}>
-            {badge}
-          </span>
-          <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
-        </div>
-        <div className={`grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6 w-full px-2 sm:px-4 md:px-6 lg:px-8 justify-items-center ${centered
-          ? 'md:flex md:flex-wrap md:justify-center'
-          : 'md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'
-          }`}>
-          {members.map((member, index) => (
-            <TeamCard
-              key={`${title}-${index}`}
-              name={member.name}
-              role={member.role}
-              image={member.image}
-              linkedin={member.linkedin}
-              github={member.github}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const filters = [
-    { label: 'All', value: 'All' },
-    { label: 'Faculty Coordinators', value: 'Faculty Coordinators' },
+  // ──────────────────────────────────────────────────────
+  // DEPARTMENTS — list with display labels and internal values
+  // Order matters — yeh sequence me sections render hote hain
+  // ──────────────────────────────────────────────────────
+  const departments = [
     { label: 'Core Team', value: 'Core Team' },
     { label: 'Technical Team', value: 'Technical Team' },
     { label: 'Outreach Team', value: 'Outreach Team' },
     { label: 'Design Team', value: 'Design Team' },
     { label: 'Content & Docs', value: 'Content and Documentation Team' },
     { label: 'Liaisoning Team', value: 'Liaisoning Team' },
-    { label: 'Events & Training', value: 'Events and Training Team' },
     { label: 'Marketing Team', value: 'Marketing Team' },
+    { label: 'Events & Training', value: 'Events and Training Team' },
     { label: 'Media & Networking', value: 'Media and Networking Team' },
   ];
 
-  return (
-    <div className="space-y-8 pt-32 bg-white dark:bg-black min-h-screen">
+  // ──────────────────────────────────────────────────────
+  // Filter chips ka final list (All + Faculty + departments)
+  // ──────────────────────────────────────────────────────
+  const filters = [
+    { label: 'All', value: 'All' },
+    { label: 'Faculty', value: 'Faculty Coordinators' },
+    ...departments,
+  ];
 
-      {/* Filter Buttons */}
-      <div className="flex flex-wrap gap-2 px-2 justify-center">
-        {filters.map(({ label, value }) => (
-          <Button
-            key={value}
-            variant={activeFilter === value ? 'default' : 'outline'}
-            className={`text-xs px-2 py-1.5 h-auto min-h-[32px] flex items-center justify-center whitespace-nowrap transition-all duration-200 ${activeFilter === value
-              ? 'bg-[#05B1DE] text-white hover:bg-[#05B1DE]/90'
-              : 'hover:bg-[#05B1DE]/10'
-              }`}
-            onClick={() => setActiveFilter(value)}
+  // ──────────────────────────────────────────────────────
+  // Filter logic — active filter ke according members dikhao
+  // useMemo se re-compute na ho har render pe
+  // ──────────────────────────────────────────────────────
+  const filteredTeam = useMemo(() => {
+    if (activeFilter === 'All' || activeFilter === 'Faculty Coordinators') {
+      return teamData;
+    }
+    return teamData.filter(
+      (m) => m.department.trim().toLowerCase() === activeFilter.trim().toLowerCase()
+    );
+  }, [activeFilter]);
+
+  // Faculty section sirf 'All' ya 'Faculty' pe show hota hai
+  const showFaculty = activeFilter === 'All' || activeFilter === 'Faculty Coordinators';
+
+  // ══════════════════════════════════════════════════════
+  // DEPARTMENT SECTION COMPONENT
+  // ══════════════════════════════════════════════════════
+  // Reusable component for har department section
+  // (header + heads sub-section + members sub-section)
+  // ══════════════════════════════════════════════════════
+  const DepartmentSection = ({ deptValue, deptLabel, sectionNumber }) => {
+    // Sirf is department ke members nikalo
+    const deptMembers = filteredTeam.filter((m) => m.department === deptValue);
+    if (deptMembers.length === 0) return null;
+
+    // Heads (year 2) aur members (year 1) alag karo
+    const heads = deptMembers.filter((m) => m.year === 2);
+    const members = deptMembers.filter((m) => m.year === 1);
+
+    return (
+      <section className="py-14 md:py-20 border-b border-white/10">
+        {/* ─────── Section Header ─────── */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14 px-4 md:px-6">
+          <div className="flex-1">
+            {/* Small section number (e.g. "SECTION 02") with cyan line */}
+            <div className="flex items-center gap-2 text-[11px] text-white/45 font-mono font-semibold tracking-widest mb-3">
+              <span className="inline-block w-6 h-px bg-[#05B1DE]" />
+              SECTION {String(sectionNumber).padStart(2, '0')}
+            </div>
+            {/* Big department title */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.05]">
+              {deptLabel}
+            </h2>
+          </div>
+          {/* Right side: member count card */}
+          <div className="self-start md:self-auto bg-[#141414] border border-white/10 rounded-xl px-6 py-4 text-center relative overflow-hidden min-w-[110px]">
+            <div
+              className="absolute top-0 left-0 right-0 h-px opacity-40"
+              style={{ background: 'linear-gradient(90deg, transparent, #05B1DE, transparent)' }}
+            />
+            <div className="text-3xl font-extrabold text-[#05B1DE] leading-none">
+              {String(deptMembers.length).padStart(2, '0')}
+            </div>
+            <div className="text-[10px] text-white/45 uppercase tracking-widest font-semibold mt-2">
+              Members
+            </div>
+          </div>
+        </div>
+
+        {/* ─────── HEADS SUB-SECTION (2nd year) ─────── */}
+        {heads.length > 0 && (
+          <div className="mb-12">
+            {/* Sub-section label */}
+            <div className="flex items-center gap-3 mb-6 px-4 md:px-6">
+              <span className="text-xs sm:text-sm text-white/70 uppercase tracking-widest font-bold">
+                Team Heads
+              </span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider font-mono bg-purple-500/15 text-purple-300 border border-purple-400/25">
+                2ND YEAR
+              </span>
+              <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
+            </div>
+            {/* Cards grid — HEADS me bigger cards
+                FIXED columns: mobile=2, tablet=3, desktop=3
+                Cards apne grid cell ko fully fill karte hain (no max-width)
+                Future me aur heads add hone pe naturally arrange ho jayenge */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 md:gap-7 px-3 sm:px-4 md:px-6">
+              {heads.map((m, i) => (
+                <TeamCard
+                  key={`${deptValue}-head-${i}`}
+                  name={m.name}
+                  role={m.role}
+                  image={m.image}
+                  linkedin={m.linkedin}
+                  github={m.github}
+                  instagram={m.instagram}
+                  quote={m.quote}
+                  year={m.year}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ─────── MEMBERS SUB-SECTION (1st year) ─────── */}
+        {members.length > 0 && (
+          <div>
+            <div className="flex items-center gap-3 mb-6 px-4 md:px-6">
+              <span className="text-xs sm:text-sm text-white/70 uppercase tracking-widest font-bold">
+                Associate Members
+              </span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider font-mono bg-green-500/15 text-green-300 border border-green-400/25">
+                1ST YEAR
+              </span>
+              <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
+            </div>
+            {/* Cards grid — MEMBERS
+                FIXED columns: mobile=2, tablet=3, desktop=4
+                Cards fully fill their grid cell (no max-width)
+                Future me aur members add hone pe naturally arrange ho jayenge */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7 px-3 sm:px-4 md:px-6">
+              {members.map((m, i) => (
+                <TeamCard
+                  key={`${deptValue}-member-${i}`}
+                  name={m.name}
+                  role={m.role}
+                  image={m.image}
+                  linkedin={m.linkedin}
+                  github={m.github}
+                  instagram={m.instagram}
+                  quote={m.quote}
+                  year={m.year}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    );
+  };
+
+  // ══════════════════════════════════════════════════════
+  // FACULTY CARD COMPONENT
+  // ══════════════════════════════════════════════════════
+  // Yeh card different from regular TeamCard:
+  //   - Horizontal layout (photo left, info right)
+  //   - Purple gradient theme
+  //   - No flip
+  // ══════════════════════════════════════════════════════
+  const FacultyCard = ({ name, role, image, linkedin }) => (
+    <div className="relative overflow-hidden rounded-2xl border border-purple-400/20 p-6 sm:p-7 md:p-8 flex items-center gap-5 sm:gap-6 transition-all hover:border-purple-400/40 hover:-translate-y-1"
+      style={{
+        background: 'linear-gradient(135deg, rgba(181,133,240,0.05) 0%, rgba(5,177,222,0.03) 100%)',
+      }}
+    >
+      {/* Ambient purple glow in corner */}
+      <div
+        className="absolute -top-1/2 -right-1/4 w-72 h-72 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(181,133,240,0.08) 0%, transparent 60%)',
+        }}
+      />
+      {/* Photo with purple ring + badge */}
+      <div className="relative flex-shrink-0">
+        <img
+          src={image}
+          alt={name}
+          loading="lazy"
+          className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover border-2 border-purple-400/60 p-[3px] bg-black"
+        />
+        <div className="absolute -bottom-1 -right-1 bg-purple-400 text-black text-[9px] font-extrabold tracking-widest px-2 py-0.5 rounded-full border-2 border-black">
+          FACULTY
+        </div>
+      </div>
+      {/* Info */}
+      <div className="flex-1 relative z-10 min-w-0">
+        <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight truncate">{name}</h3>
+        <div className="text-[11px] sm:text-xs text-purple-300 font-bold uppercase tracking-widest font-mono mt-1.5 mb-2.5">
+          {role}
+        </div>
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-white/65 hover:text-[#05B1DE] transition-colors"
           >
-            {label}
-          </Button>
-        ))}
+            View Profile →
+          </a>
+        )}
+      </div>
+    </div>
+  );
+
+  // ══════════════════════════════════════════════════════
+  // MAIN RENDER
+  // ══════════════════════════════════════════════════════
+  return (
+    <div className="bg-white dark:bg-black min-h-screen pt-24 sm:pt-28 md:pt-32">
+
+      {/* ════════ HERO SECTION ════════ */}
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 sm:pt-12 sm:pb-16 text-center">
+        {/* Ambient cyan glow behind hero */}
+        <div
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] -z-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(5,177,222,0.08) 0%, transparent 60%)',
+          }}
+        />
+
+        {/* Eyebrow tag */}
+        <div className="relative z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#05B1DE]/10 border border-[#05B1DE]/20 text-[11px] sm:text-xs text-[#05B1DE] font-semibold uppercase tracking-widest mb-5 sm:mb-7">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#05B1DE] shadow-[0_0_8px_#05B1DE]" />
+          The People Behind EDC
+        </div>
+
+        {/* Main heading */}
+        <h1 className="relative z-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05] mb-5 sm:mb-7">
+          Meet the team building
+          <br />
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage: 'linear-gradient(135deg, #05B1DE 0%, #B585F0 100%)',
+            }}
+          >
+            JSSUN's startup culture
+          </span>
+        </h1>
+
+        {/* Sub-text */}
+        <p className="relative z-10 text-base sm:text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
+          Faculty mentors, executive members, and associates working together across nine specialized teams.
+        </p>
+
+        {/* Stats grid — 4 stats in a connected card */}
+        <div className="relative z-10 mt-10 sm:mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-0 max-w-4xl mx-auto border border-white/10 rounded-2xl overflow-hidden"
+          style={{ background: 'linear-gradient(180deg, rgba(20,20,20,0.4), rgba(10,10,10,0.6))' }}
+        >
+          {/* Each stat — border-r on non-last, border-b on top row for mobile 2-col */}
+          <div className="text-center py-5 sm:py-6 md:py-7 px-2 sm:px-4 border-r border-b md:border-b-0 border-white/10">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-none">09</div>
+            <div className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-widest font-semibold mt-2 sm:mt-3">Departments</div>
+          </div>
+          <div className="text-center py-5 sm:py-6 md:py-7 px-2 sm:px-4 md:border-r border-b md:border-b-0 border-white/10">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-none">
+              {teamData.length}<span className="text-[#05B1DE] font-semibold">+</span>
+            </div>
+            <div className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-widest font-semibold mt-2 sm:mt-3">Members</div>
+          </div>
+          <div className="text-center py-5 sm:py-6 md:py-7 px-2 sm:px-4 border-r border-white/10">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-none">02</div>
+            <div className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-widest font-semibold mt-2 sm:mt-3">Faculty</div>
+          </div>
+          <div className="text-center py-5 sm:py-6 md:py-7 px-2 sm:px-4">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-none">
+              08<span className="text-[#05B1DE] font-semibold">+</span>
+            </div>
+            <div className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-widest font-semibold mt-2 sm:mt-3">Events</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════ FILTER CHIPS BAR ════════ */}
+      {/* Sticky — scroll karne pe top pe rahega.
+          top value navbar ke height ke according hai */}
+      <div className="sticky top-0 md:top-20 z-30 bg-black/85 backdrop-blur-xl border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3.5 flex items-center gap-2 overflow-x-auto"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {/* "Jump to" label */}
+          <span className="text-[10px] text-white/45 font-bold uppercase tracking-widest whitespace-nowrap pr-3 border-r border-white/10 mr-1 hidden sm:inline-block">
+            Jump to
+          </span>
+          {/* Filter chips */}
+          {filters.map(({ label, value }) => (
+            <button
+              key={value}
+              onClick={() => setActiveFilter(value)}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
+                activeFilter === value
+                  ? 'bg-[#05B1DE] border-[#05B1DE] text-black shadow-[0_0_20px_rgba(5,177,222,0.3)]'
+                  : 'bg-transparent border-white/15 text-white/70 hover:border-white/40 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="space-y-12 pb-12">
-        {/* Faculty Coordinators */}
-        {showFacultyCoordinators && (
-          <MemberSection
-            title="Faculty Coordinators"
-            members={facultyCoordinators}
-            badge="Faculty"
-            badgeColor="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
-            centered={true}
-          />
+      {/* ════════ DEPARTMENTS CONTAINER ════════ */}
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6">
+
+        {/* Faculty Section (sirf All ya Faculty filter pe) */}
+        {showFaculty && (
+          <section className="py-14 md:py-20 border-b border-white/10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14 px-4 md:px-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 text-[11px] text-white/45 font-mono font-semibold tracking-widest mb-3">
+                  <span className="inline-block w-6 h-px bg-[#05B1DE]" />
+                  SECTION 01
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.05]">
+                  Faculty Coordinators
+                </h2>
+                <p className="text-sm sm:text-base text-white/65 mt-3 max-w-md leading-relaxed">
+                  Mentorship and academic guidance from JSS University faculty.
+                </p>
+              </div>
+              <div className="self-start md:self-auto bg-[#141414] border border-white/10 rounded-xl px-6 py-4 text-center relative overflow-hidden min-w-[110px]">
+                <div
+                  className="absolute top-0 left-0 right-0 h-px opacity-40"
+                  style={{ background: 'linear-gradient(90deg, transparent, #05B1DE, transparent)' }}
+                />
+                <div className="text-3xl font-extrabold text-[#05B1DE] leading-none">02</div>
+                <div className="text-[10px] text-white/45 uppercase tracking-widest font-semibold mt-2">Mentors</div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-7 px-3 sm:px-4 md:px-6">
+              {facultyCoordinators.map((f, i) => (
+                <FacultyCard key={i} {...f} />
+              ))}
+            </div>
+          </section>
         )}
 
-        {/* Team Members */}
-        {activeFilter !== 'Faculty Coordinators' && (
-          <>
-            <MemberSection
-              title="Executive Members"
-              members={executiveMembers}
-              badge="2nd Year"
-              badgeColor="bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+        {/* Department sections — yeh dynamically render hote hain
+            sectionNumber 2 se start (1 faculty hai) */}
+        {activeFilter !== 'Faculty Coordinators' &&
+          departments.map((d, i) => (
+            <DepartmentSection
+              key={d.value}
+              deptValue={d.value}
+              deptLabel={d.label === 'Content & Docs' ? 'Content & Documentation' : d.label}
+              sectionNumber={i + 2}
             />
-            <MemberSection
-              title="Associate Members"
-              members={associateMembers}
-              badge="1st Year"
-              badgeColor="bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
-            />
-          </>
-        )}
+          ))}
       </div>
 
       <Footer />
