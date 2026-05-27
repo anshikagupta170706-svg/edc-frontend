@@ -64,59 +64,56 @@ const HugeTimeline = () => {
   ];
 
   return (
-    <>
-      {/* HIDE: The Gauntlet (Five Rounds) — structure preserved for reuse */}
-      <section ref={containerRef} className="py-32 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-b from-[#000000] to-[#05000A] hidden">
-        <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none"></div>
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-24">
-            <span className="text-[#D776FF] font-bold tracking-[0.2em] uppercase text-xs">The Gauntlet</span>
-            <h2 className="text-5xl sm:text-7xl font-black text-white mt-4">The <span className="fp-subtitle">Five Rounds</span></h2>
-            <p className="text-white/50 text-xl mt-6 max-w-2xl mx-auto">Every round tests a different dimension of entrepreneurial ability. A true test of execution down to the wire.</p>
-          </div>
+    <section ref={containerRef} className="py-32 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-b from-[#000000] to-[#05000A]">
+      <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none"></div>
+      <div className="max-w-5xl mx-auto relative z-10">
+        <div className="text-center mb-24">
+          <span className="text-[#D776FF] font-bold tracking-[0.2em] uppercase text-xs">The Gauntlet</span>
+          <h2 className="text-5xl sm:text-7xl font-black text-white mt-4">The <span className="fp-subtitle">Five Rounds</span></h2>
+          <p className="text-white/50 text-xl mt-6 max-w-2xl mx-auto">Every round tests a different dimension of entrepreneurial ability. A true test of execution down to the wire.</p>
+        </div>
 
-          <div className="relative">
-            {/* Background static line */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-[#1B002B] rounded-full hidden md:block"></div>
+        <div className="relative">
+          {/* Background static line */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-[#1B002B] rounded-full hidden md:block"></div>
 
-            {/* Animated glowing line */}
-            <motion.div
-              className="absolute left-1/2 -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-[#7B2FBE] via-[#D776FF] to-[#7B2FBE] rounded-full hidden md:block"
-              style={{ height, filter: 'drop-shadow(0 0 15px #D776FF)' }}
-            ></motion.div>
+          {/* Animated glowing line */}
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-[#7B2FBE] via-[#D776FF] to-[#7B2FBE] rounded-full hidden md:block"
+            style={{ height, filter: 'drop-shadow(0 0 15px #D776FF)' }}
+          ></motion.div>
 
-            <div className="space-y-24">
-              {rounds.map((round, index) => (
-                <div key={index} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-20 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+          <div className="space-y-24">
+            {rounds.map((round, index) => (
+              <div key={index} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-20 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
 
-                  {/* Content Card */}
-                  <div className={`w-full md:w-1/2 flex ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                    <div className="fp-card p-8 sm:p-10 rounded-3xl w-full max-w-lg hover:-translate-y-2 transition-transform duration-500 border border-[#7B2FBE]/30 hover:border-[#D776FF]/70 group relative overflow-hidden bg-[#0A0014]/80 text-left">
-                      <div className="absolute -top-10 -right-10 p-3 opacity-5 group-hover:opacity-20 transition-opacity duration-700 blur-2xl pointer-events-none">
-                        <round.icon className="h-64 w-64 text-[#D776FF]" />
-                      </div>
-                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D776FF]/10 text-[#D776FF] font-black text-xs tracking-widest mb-6 border border-[#D776FF]/20">
-                        {round.label}
-                      </div>
-                      <h3 className="text-3xl font-black text-white mb-4 relative z-10 group-hover:text-[#D776FF] transition-colors">{round.title}</h3>
-                      <p className="text-white/60 text-base sm:text-lg leading-relaxed relative z-10">{round.desc}</p>
+                {/* Content Card */}
+                <div className={`w-full md:w-1/2 flex ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
+                  <div className="fp-card p-8 sm:p-10 rounded-3xl w-full max-w-lg hover:-translate-y-2 transition-transform duration-500 border border-[#7B2FBE]/30 hover:border-[#D776FF]/70 group relative overflow-hidden bg-[#0A0014]/80 text-left">
+                    <div className="absolute -top-10 -right-10 p-3 opacity-5 group-hover:opacity-20 transition-opacity duration-700 blur-2xl pointer-events-none">
+                      <round.icon className="h-64 w-64 text-[#D776FF]" />
                     </div>
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D776FF]/10 text-[#D776FF] font-black text-xs tracking-widest mb-6 border border-[#D776FF]/20">
+                      {round.label}
+                    </div>
+                    <h3 className="text-3xl font-black text-white mb-4 relative z-10 group-hover:text-[#D776FF] transition-colors">{round.title}</h3>
+                    <p className="text-white/60 text-base sm:text-lg leading-relaxed relative z-10">{round.desc}</p>
                   </div>
-
-                  {/* Center Node */}
-                  <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center size-20 rounded-full border-4 border-[#05000A] bg-[#1B002B] shadow-[0_0_30px_rgba(123,47,190,0.4)] z-10 hidden md:flex transition-transform hover:scale-110 duration-300">
-                    <round.icon className="size-8 text-[#D776FF]" />
-                  </div>
-
-                  {/* Empty space for alternating layout */}
-                  <div className="hidden md:block w-1/2"></div>
                 </div>
-              ))}
-            </div>
+
+                {/* Center Node */}
+                <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center size-20 rounded-full border-4 border-[#05000A] bg-[#1B002B] shadow-[0_0_30px_rgba(123,47,190,0.4)] z-10 hidden md:flex transition-transform hover:scale-110 duration-300">
+                  <round.icon className="size-8 text-[#D776FF]" />
+                </div>
+
+                {/* Empty space for alternating layout */}
+                <div className="hidden md:block w-1/2"></div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
@@ -170,6 +167,7 @@ const formatCountdown = (diffMs) => {
 
 /* ──────────────────── Main Component ──────────────────── */
 const FoundersPit = () => {
+  // Date-driven phases: "pre_launch", "registration_open", "evaluation", "results"
   const [now, setNow] = useState(() => new Date());
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isAgendaOpen, setIsAgendaOpen] = useState(false);
@@ -221,22 +219,6 @@ const FoundersPit = () => {
   const handleHeroCta = () => {
     window.open(FP_LOGIN_URL, '_blank');
   };
-
-  const softwareThemes = [
-    { title: 'Web Development Track', icon: Code },
-    { title: 'Mobile App Development Track', icon: Smartphone },
-    { title: 'Data Science & Machine Learning', icon: Database },
-    { title: 'Blockchain & Cryptography Track', icon: Bitcoin },
-    { title: 'Open Innovation Track', icon: Lightbulb },
-  ];
-
-  const hardwareThemes = [
-    { title: 'Smart Cities and IoT Solutions', icon: Building2 },
-    { title: 'IoT-Enabled Healthcare & Assistive Technologies', icon: HeartPulse },
-    { title: 'Smart Wearables for Safety', icon: Shield },
-    { title: 'Disaster Management & Emergency Response', icon: Zap },
-    { title: 'Agritech and Rural Innovation', icon: Leaf },
-  ];
 
   return (
     <>
@@ -363,6 +345,7 @@ const FoundersPit = () => {
             </div>
 
             <div className="mb-10" style={{ animation: 'fadeSlideUp 0.8s ease-out 0.2s both' }}>
+
               <p className="text-white/50 text-sm sm:text-base max-w-xl mx-auto">
                 A high-intensity startup simulation where ideas are tested, built, and battle-proven.
               </p>
@@ -384,10 +367,6 @@ const FoundersPit = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center" style={{ animation: 'fadeSlideUp 0.8s ease-out 0.4s both' }}>
-              <Button size="lg" onClick={handleHeroCta} className="fp-btn-primary w-full sm:w-auto text-white font-bold text-base px-10 py-7 rounded-full group">
-                Login Now
-                <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
               <Button size="lg" onClick={() => executeScroll("what-is-fp")} variant="outline" className="w-full sm:w-auto border-2 border-[#7B2FBE]/30 text-[#D776FF] hover:bg-[#7B2FBE]/10 hover:border-[#D776FF]/60 font-semibold text-base px-10 py-7 rounded-full bg-transparent">
                 View Details
               </Button>
@@ -401,7 +380,7 @@ const FoundersPit = () => {
             </div>
           </div>
 
-          {/* 2. SOCIAL PROOF / QUICK HYPE STRIP ══════════ */}
+          {/* 2. SOCIAL PROOF / QUICK HYPE STRIP (ANCHORED TO BOTTOM) ══════════ */}
           <div className="absolute bottom-0 left-0 w-full py-4 sm:py-5 bg-[#1B002B]/80 backdrop-blur-xl border-t border-[#7B2FBE]/40 overflow-hidden flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-10 px-4 z-20 shadow-[0_-15px_40px_rgba(123,47,190,0.15)]">
             {["Startup Simulation Experience", "Multi-Round Competition", "Real-World Problem Solving", "Pitch to Experts"].map((item, i) => (
               <div key={i} className="flex items-center gap-2 group">
@@ -412,8 +391,8 @@ const FoundersPit = () => {
           </div>
         </div>
 
-        {/* HIDE: Battle Timeline — structure preserved for reuse */}
-        <section id="battle-timeline" className="relative py-16 sm:py-24 px-4 sm:px-6 bg-[#05000A] border-t border-[#7B2FBE]/20 hidden">
+        {/* 2.5 TIMELINE + COUNTDOWN ══════════ */}
+        <section id="battle-timeline" className="relative py-16 sm:py-24 px-4 sm:px-6 bg-[#05000A] border-t border-[#7B2FBE]/20">
           <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none" />
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-12">
@@ -503,7 +482,7 @@ const FoundersPit = () => {
           </div>
         </section>
 
-        {/* 3. WHAT IS FOUNDER'S PIT ══════════ */}
+        {/* 3. WHAT IS FOUNDER’S PIT ══════════ */}
         <section id="what-is-fp" className="relative py-20 sm:py-28 px-4 sm:px-6 overflow-hidden">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(94,12,159,0.15) 0%, transparent 70%)', filter: 'blur(60px)' }} />
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -513,7 +492,7 @@ const FoundersPit = () => {
                 <span className="fp-subtitle">Build a Startup.</span>
               </h2>
               <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-8">
-                Founder's Pit 2026 is a high-energy, one-day startup simulation by the Entrepreneurship Development Cell (EDC), JSS University Noida. Participants step into the role of founders identifying real-world problems, building viable solutions, adapting to dynamic challenges, and pitching their ideas to a panel of judges in a fast-paced, competitive environment.
+                Founder’s Pit 2026 is a high-energy, one-day startup simulation by the Entrepreneurship Development Cell (EDC), JSS University Noida. Participants step into the role of founders identifying real-world problems, building viable solutions, adapting to dynamic challenges, and pitching their ideas to a panel of judges in a fast-paced, competitive environment.
               </p>
               <div className="flex flex-col gap-4">
                 <div className="fp-card p-3 sm:p-4 rounded-2xl flex items-center gap-3 sm:gap-4">
@@ -532,9 +511,15 @@ const FoundersPit = () => {
             </div>
             <div className="relative w-full aspect-square md:aspect-auto md:h-full min-h-[300px] md:min-h-[400px]">
               <div className="absolute inset-0 bg-gradient-to-br from-[#1B002B] to-[#3A036E] rounded-3xl fp-card overflow-hidden">
+
+                {/* Background Grid & Glow */}
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(#D776FF 1px, transparent 1px)", backgroundSize: "20px 20px" }}></div>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,rgba(215,118,255,0.15)_0%,transparent_50%)] animate-pulse"></div>
+
+                {/* Floating elements simulating a startup Pitch Deck/Dashboard */}
                 <div className="absolute top-8 left-8 right-8 bottom-8 perspective-1000">
+
+                  {/* Card 1: Revenue / Growth */}
                   <motion.div
                     animate={{ y: [0, -15, 0] }}
                     transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
@@ -550,6 +535,8 @@ const FoundersPit = () => {
                       ))}
                     </div>
                   </motion.div>
+
+                  {/* Card 2: The Pitch Deck */}
                   <motion.div
                     animate={{ y: [0, 15, 0] }}
                     transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 }}
@@ -572,6 +559,8 @@ const FoundersPit = () => {
                       />
                     </div>
                   </motion.div>
+
+                  {/* Card 3: The Target Metric */}
                   <motion.div
                     animate={{ y: [0, -10, 0] }}
                     transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}
@@ -587,14 +576,17 @@ const FoundersPit = () => {
                       </div>
                     </div>
                   </motion.div>
+
                 </div>
               </div>
+              {/* Decorative floating elements */}
               <div className="absolute -top-6 -right-6 fp-card p-4 rounded-2xl backdrop-blur-xl animate-float-slow z-40 shadow-[0_0_30px_rgba(215,118,255,0.3)] border border-[#D776FF]/30">
                 <Sparkles className="text-[#D776FF] size-8" />
               </div>
             </div>
           </div>
         </section>
+
 
         {/* 4. WHO SHOULD ENTER ══════════ */}
         <section className="py-12 sm:py-20 px-4 sm:px-6 bg-[#0B0014] border-t border-[#7B2FBE]/10">
@@ -629,8 +621,10 @@ const FoundersPit = () => {
             <div className="text-center mb-16">
               <h2 className="text-2xl sm:text-5xl font-black text-white">The <span className="fp-subtitle">Experience Flow</span></h2>
             </div>
+
             <div className="grid md:grid-cols-3 gap-6 relative">
               <div className="hidden md:block absolute top-[45px] left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-[#7B2FBE]/10 via-[#D776FF]/50 to-[#7B2FBE]/10 z-0 border-t border-dashed border-[#D776FF]/30"></div>
+
               {[
                 { title: "THE BID", desc: "Choose your battlefield. Compete aggressively for the best problem statements.", icon: Target },
                 { title: "THE BUILD", desc: "Design a solution. Build a robust business model. Handle unexpected twists.", icon: Zap },
@@ -666,19 +660,30 @@ const FoundersPit = () => {
               <h3 className="text-2xl font-bold flex items-center gap-3 mb-8"><FileText className="text-[#D776FF] size-8" /> Submission Requirements (STRICT)</h3>
               <p className="text-white/80 font-semibold mb-6 text-lg">Your deck must follow this exact 6-slide structure:</p>
               <div className="space-y-6">
-                {[
-                  { num: 1, title: "Introduction", desc: "Introduce your team and set context for the pitch." },
-                  { num: 2, title: "Problem Statement", desc: "Clearly define the core problem you are solving." },
-                  { num: 3, title: "Proposed Solution", desc: "Explain your product, service, or strategic approach." },
-                  { num: 4, title: "Implementation / Impact", desc: "Show execution plan and expected impact." },
-                  { num: 5, title: "Business Model", desc: "Summarize how your idea sustains and scales." },
-                  { num: 6, title: "Thank You", desc: "Close your presentation clearly and professionally." },
-                ].map((slide) => (
-                  <div key={slide.num} className="flex gap-4 items-start">
-                    <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">{slide.num}</div>
-                    <div><h4 className="font-bold text-white text-lg">{slide.title}</h4><p className="text-white/50 text-sm mt-1">{slide.desc}</p></div>
-                  </div>
-                ))}
+                <div className="flex gap-4 items-start">
+                  <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">1</div>
+                  <div><h4 className="font-bold text-white text-lg">Introduction</h4><p className="text-white/50 text-sm mt-1">Introduce your team and set context for the pitch.</p></div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">2</div>
+                  <div><h4 className="font-bold text-white text-lg">Problem Statement</h4><p className="text-white/50 text-sm mt-1">Clearly define the core problem you are solving.</p></div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">3</div>
+                  <div><h4 className="font-bold text-white text-lg">Proposed Solution</h4><p className="text-white/50 text-sm mt-1">Explain your product, service, or strategic approach.</p></div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">4</div>
+                  <div><h4 className="font-bold text-white text-lg">Implementation / Impact</h4><p className="text-white/50 text-sm mt-1">Show execution plan and expected impact.</p></div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">5</div>
+                  <div><h4 className="font-bold text-white text-lg">Business Model</h4><p className="text-white/50 text-sm mt-1">Summarize how your idea sustains and scales.</p></div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="size-8 shrink-0 rounded-full bg-[#1B002B] text-[#D776FF] font-bold text-sm flex items-center justify-center border border-[#7B2FBE]">6</div>
+                  <div><h4 className="font-bold text-white text-lg">Thank You</h4><p className="text-white/50 text-sm mt-1">Close your presentation clearly and professionally.</p></div>
+                </div>
               </div>
             </div>
 
@@ -734,16 +739,18 @@ const FoundersPit = () => {
           </div>
         </section>
 
-        {/* HIDE: Rewards & Recognition — structure preserved for reuse */}
-        <section className="py-20 px-4 sm:px-6 bg-[#080010] border-y border-[#7B2FBE]/15 relative overflow-hidden hidden">
+        {/* 9. REWARDS & GOODIES ══════════ */}
+        <section className="py-20 px-4 sm:px-6 bg-[#080010] border-y border-[#7B2FBE]/15 relative overflow-hidden">
           <div className="absolute inset-0 fp-grid-bg opacity-20 pointer-events-none" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-[240px] bg-[radial-gradient(circle,rgba(215,118,255,0.18)_0%,transparent_70%)] blur-3xl pointer-events-none" />
+
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-12">
               <span className="text-[#D776FF] font-bold tracking-[0.2em] uppercase text-xs">Rewards & Recognition</span>
               <h2 className="text-3xl sm:text-5xl font-black text-white mt-3">Win More Than Just <span className="fp-subtitle">Bragging Rights</span></h2>
               <p className="text-white/60 mt-4 max-w-3xl mx-auto text-sm sm:text-base">Top teams walk away with tangible rewards, official recognition, and exciting perks from Founder&apos;s Pit.</p>
             </div>
+
             <div className="mb-10 fp-card rounded-3xl border border-[#D776FF]/45 p-6 sm:p-8 text-center bg-[#140024]/80 shadow-[0_0_45px_rgba(215,118,255,0.22)]">
               <p className="text-[#D776FF]/90 text-xs sm:text-sm uppercase tracking-[0.28em] font-bold">Mega Prize Pool</p>
               <p className="mt-2 text-5xl sm:text-7xl font-black leading-none text-transparent bg-clip-text bg-gradient-to-r from-[#EED6FF] via-[#D776FF] to-[#B45CFF] drop-shadow-[0_0_20px_rgba(215,118,255,0.45)]">
@@ -751,12 +758,45 @@ const FoundersPit = () => {
               </p>
               <p className="mt-3 text-white/70 text-sm sm:text-base">In cash rewards for top-performing teams</p>
             </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { title: "Problem Clarity", val: "25%" },
+                { title: "Innovation", val: "25%" },
+                { title: "Feasibility", val: "25%" },
+                { title: "Impact", val: "25%" }
+              ].map((item, i) => (
+                <div key={i} className="fp-card text-center p-6 sm:p-8 rounded-3xl flex flex-col justify-center items-center">
+                  <span className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#D776FF] to-[#7B2FBE] mb-2">{item.val}</span>
+                  <span className="text-white/80 font-bold text-sm uppercase tracking-wide">{item.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
-                { title: 'Prize Pool', desc: 'Compete for a major cash prize across top-performing teams.', icon: Trophy, highlight: true },
-                { title: 'Certificates', desc: 'Get official participation and merit certificates to strengthen your profile.', icon: CheckCircle2 },
-                { title: 'Trophies', desc: 'Winners and standout teams will receive trophies for their exceptional performance.', icon: Medal },
-                { title: 'Many More Goodies', desc: 'Exclusive goodies and surprise rewards await teams that rise through the rounds.', icon: Gift },
+                {
+                  title: 'Prize Pool',
+                  desc: 'Compete for a major cash prize across top-performing teams.',
+                  icon: Trophy,
+                  highlight: true,
+                },
+                {
+                  title: 'Certificates',
+                  desc: 'Get official participation and merit certificates to strengthen your profile.',
+                  icon: CheckCircle2,
+                },
+                {
+                  title: 'Trophies',
+                  desc: 'Winners and standout teams will receive trophies for their exceptional performance.',
+                  icon: Medal,
+                },
+                {
+                  title: 'Many More Goodies',
+                  desc: 'Exclusive goodies and surprise rewards await teams that rise through the rounds.',
+                  icon: Gift,
+                },
               ].map((reward, index) => (
                 <div
                   key={index}
@@ -778,7 +818,7 @@ const FoundersPit = () => {
           </div>
         </section>
 
-        {/* 10, 11, 14. DYNAMIC STATE PORTAL ══════════ */}
+        {/* 10, 11, 14. DYNAMIC STATE PORTAL (REGISTRATION / SUBMISSION) ══════════ */}
         <section id="registration-portal" className="py-20 px-4 sm:px-6 relative">
           <div className="max-w-3xl mx-auto">
             <div className="fp-card p-6 sm:p-10 rounded-[40px] relative overflow-hidden">
@@ -822,12 +862,13 @@ const FoundersPit = () => {
                   <Button className="fp-btn-primary px-10 py-6 text-lg font-bold rounded-xl">View Shortlist</Button>
                 </div>
               )}
+
             </div>
           </div>
         </section>
 
-        {/* HIDE: FAQ — structure preserved, all text data will need to be changed for future events */}
-        <section className="py-20 px-4 sm:px-6 hidden">
+        {/* 12. FAQ ══════════ */}
+        <section className="py-20 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-2xl font-black text-white">Frequently Asked <span className="fp-subtitle">Questions</span></h2>
