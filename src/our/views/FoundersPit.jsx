@@ -12,7 +12,8 @@ import {
 } from '@/components/ui/drawer';
 import {
   Info, Calendar, MapPin, Users, Lightbulb, ArrowRight, Sparkles, Zap, Target, TrendingUp,
-  ShieldCheck, Upload, Clock, Phone, Mail, Instagram, MessageCircle, AlertTriangle, FileText, CheckCircle2, ChevronRight, Check, Trophy, Medal, Gift
+  ShieldCheck, Upload, Clock, Phone, Mail, Instagram, MessageCircle, AlertTriangle, FileText, CheckCircle2, ChevronRight, Check, Trophy, Medal, Gift,
+  Code, Smartphone, Database, Bitcoin, Building2, HeartPulse, Shield, Leaf
 } from 'lucide-react';
 import { MarqueeAnimation } from '@/components/ui/marquee-effect';
 import LightRays from '../../components/LightRays';
@@ -169,6 +170,7 @@ const FoundersPit = () => {
   // Date-driven phases: "pre_launch", "registration_open", "evaluation", "results"
   const [now, setNow] = useState(() => new Date());
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isAgendaOpen, setIsAgendaOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeFaq, setActiveFaq] = useState(null);
   const heroRef = useRef(null);
@@ -507,6 +509,21 @@ const FoundersPit = () => {
               </p>
               <p className="mt-3 text-white/70 text-sm sm:text-base">In cash rewards for top-performing teams</p>
             </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { title: "Problem Clarity", val: "25%" },
+                { title: "Innovation", val: "25%" },
+                { title: "Feasibility", val: "25%" },
+                { title: "Impact", val: "25%" }
+              ].map((item, i) => (
+                <div key={i} className="fp-card text-center p-6 sm:p-8 rounded-3xl flex flex-col justify-center items-center">
+                  <span className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#D776FF] to-[#7B2FBE] mb-2">{item.val}</span>
+                  <span className="text-white/80 font-bold text-sm uppercase tracking-wide">{item.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
@@ -649,6 +666,105 @@ const FoundersPit = () => {
                   Acknowledge
                 </Button>
               </div>
+            </div>
+          </DrawerContent>
+        </Drawer>
+
+        {/* ══════════ AGENDA DRAWER ══════════ */}
+        <Drawer open={isAgendaOpen} onOpenChange={setIsAgendaOpen}>
+          <DrawerContent className="bg-[#0A0014]/95 backdrop-blur-xl border-t border-[#7B2FBE]/20 h-[90vh] flex flex-col">
+            <div className="mx-auto w-full max-w-lg px-4 pt-6">
+              <DrawerHeader className="flex flex-col items-start p-0">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#7B2FBE]/20 bg-[#1B002B]/30 mb-3">
+                  <Sparkles className="size-3 text-[#D776FF]" />
+                  <span className="text-[10px] tracking-[0.25em] text-[#D776FF]/80 font-semibold uppercase">
+                    Founder's Pit · Season 2026
+                  </span>
+                </div>
+                <DrawerTitle className="text-4xl font-black fp-title tracking-tighter leading-none mb-2">
+                  AGENDA
+                </DrawerTitle>
+                <p className="text-[10px] tracking-[0.25em] text-[#D776FF]/70 font-bold uppercase mb-4">
+                  Enter with a mindset · Exit as a founder
+                </p>
+              </DrawerHeader>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-4 py-2">
+              <div className="mx-auto w-full max-w-lg">
+                <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-tight mb-4">
+                  THE MOST INTENSE{' '}
+                  <span className="fp-subtitle">STARTUP EXPERIENCE</span>{' '}
+                  ON CAMPUS!
+                </h2>
+                <p className="text-sm sm:text-base text-white/80 font-semibold leading-relaxed mb-3 text-center">
+                  It is a{' '}
+                  <span className="text-[#D776FF]">startup simulation</span>{' '}
+                  where you don't just think like a{' '}
+                  <span className="text-[#D776FF]">founder</span>{' '}
+                  you become{' '}
+                  <span className="text-[#D776FF]">one.</span>
+                </p>
+                <p className="text-center text-sm sm:text-base tracking-[0.3em] font-black text-white/90 uppercase mb-5">
+                  BID . BUILD . BATTLE
+                </p>
+                <p className="text-xs sm:text-sm text-white/45 leading-relaxed mb-4 text-center">
+                  Founder's Pit is not a typical college competition. It is a fully structured,{' '}
+                  <span className="text-white/70">gamified simulation</span> of what it actually feels like
+                  to build a startup — from identifying a problem, to building a product, surviving a business
+                  crisis, and pitching to investors — all within a single day.
+                </p>
+                <p className="text-xs sm:text-sm text-white/45 leading-relaxed mb-4 text-center">
+                  <span className="text-white/70">24 teams</span> of 1st and 2nd year students compete across{' '}
+                  <span className="text-white/70">5 high-pressure rounds</span>, making real decisions with
+                  virtual capital, adapting to live crises, and presenting their complete startup to a jury of
+                  industry professionals. No pre-built ideas. No shortcuts.{' '}
+                  <span className="text-white/70">Just raw thinking, real pressure, and one day to prove it.</span>
+                </p>
+                <p className="text-xs sm:text-sm text-white/45 leading-relaxed mb-6 text-center">
+                  It's not about the "perfect" idea — it's about the grit to adapt and the hustle to turn a
+                  raw concept into a powerhouse.
+                </p>
+                <div className="h-px bg-[#7B2FBE]/15 mb-6" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#7B2FBE]/20 bg-[#1B002B]/30 mb-4">
+                  <span className="text-[10px] tracking-[0.2em] text-[#D776FF]/60 font-medium uppercase">
+                    3-Phase Adrenaline Rush
+                  </span>
+                </div>
+                <h3 className="text-xl font-black text-white tracking-tight mb-1">
+                  WHAT PARTICIPANTS{' '}
+                  <span className="fp-subtitle">WILL DO</span>
+                </h3>
+                <p className="text-[10px] tracking-[0.2em] text-[#D776FF]/60 font-bold uppercase mb-5">
+                  Inside the Pit
+                </p>
+                <div className="flex flex-col gap-3 mb-8">
+                  {[
+                    { phase: 'The Bid', desc: 'Strategically compete to claim the problem statement you want to solve.' },
+                    { phase: 'The Build', desc: 'Design your product, build a revenue model, and survive unexpected crisis scenarios.' },
+                    { phase: 'The Pitch', desc: 'Present your battle-tested startup to a panel of expert judges.' },
+                  ].map((item, i) => (
+                    <div key={i} className="fp-card rounded-2xl px-5 py-4 flex items-start gap-4" style={{ animation: 'none' }}>
+                      <div className="shrink-0 size-8 rounded-xl bg-gradient-to-br from-[#5E0C9F]/50 to-[#7B2FBE]/30 flex items-center justify-center">
+                        <span className="text-[10px] font-black text-[#D776FF]">0{i + 1}</span>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[10px] tracking-[0.2em] text-[#D776FF] font-bold uppercase">{item.phase}</span>
+                        <span className="text-xs text-white/50 leading-relaxed">{item.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mx-auto w-full max-w-lg px-4 pb-8 pt-4">
+              <Button
+                onClick={() => setIsAgendaOpen(false)}
+                className="w-full fp-btn-primary text-white font-bold py-6 rounded-xl border-0"
+              >
+                Got it!
+              </Button>
             </div>
           </DrawerContent>
         </Drawer>

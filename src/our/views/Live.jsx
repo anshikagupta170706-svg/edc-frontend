@@ -229,7 +229,8 @@ export default function Live() {
                 </div>
               </div>
 
-              <div className="mt-5">
+              {/* HIDE: Event Day Progress — structure preserved for reuse */}
+              <div className="mt-5 hidden">
                 <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.12em] text-zinc-500">
                   <span>Whole day progress</span>
                   <span>{Math.round(progress)}%</span>
@@ -272,18 +273,17 @@ export default function Live() {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-[#7B2FBE]/30 bg-[#0A0014]/85 p-5 backdrop-blur-md">
+              {/* HIDE: Event Flow — structure preserved for reuse */}
+              <div className="rounded-3xl border border-[#7B2FBE]/30 bg-[#0A0014]/85 p-5 backdrop-blur-md hidden">
                 <div className="mb-4 flex items-center justify-between">
                   <h4 className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-200">Event flow</h4>
                   <span className="text-[10px] uppercase tracking-[0.15em] text-zinc-500">Schedule</span>
                 </div>
-
                 <div className="space-y-3">
                   {timeline.map((item) => {
                     const isLive = isLiveDay && now >= item.startAt && now < item.endAt;
                     const isDone = (isLiveDay && now >= item.endAt) || isAfterLiveDay;
                     const status = isLive ? 'live' : isDone ? 'done' : 'upcoming';
-
                     return (
                       <div key={`${item.title}-${item.start}`} className="flex items-start gap-3">
                         <div className={`mt-1 h-3 w-3 rounded-full border ${isLive ? 'border-[#D776FF] bg-[#D776FF] shadow-[0_0_8px_rgba(215,118,255,0.95)]' : isDone ? 'border-[#3B1657] bg-[#3B1657]' : 'border-[#7B2FBE] bg-transparent'}`} />
@@ -300,7 +300,8 @@ export default function Live() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-[#7B2FBE]/30 bg-[#0A0014]/85 p-5 backdrop-blur-md">
+              {/* HIDE: Important Notices — structure preserved for reuse */}
+              <div className="rounded-3xl border border-[#7B2FBE]/30 bg-[#0A0014]/85 p-5 backdrop-blur-md hidden">
                 <h4 className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-200">Important notices</h4>
                 <div className="mt-3 space-y-2.5">
                   {notices.map((notice, i) => (
