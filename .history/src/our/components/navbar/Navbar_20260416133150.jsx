@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useScroll } from '@/components/use-scroll';
 import Logo from './Logo';
+import FoundersPitButton from './FoundersPitButton';
 
 // Icons
 import { FiHome, FiUsers, FiCalendar, FiInfo, FiRadio } from 'react-icons/fi';
@@ -12,7 +13,7 @@ import { FiHome, FiUsers, FiCalendar, FiInfo, FiRadio } from 'react-icons/fi';
 export default function Navbar() {
 	const scrolled = useScroll(10);
 	const location = useLocation();
-	const isFoundersPit = location.pathname.startsWith('/founders-pit');
+	const isFoundersPit = location.pathname === '/founders-pit';
 	const primaryColor = isFoundersPit ? '#7B2FBE' : '#05B1DE';
 	const primaryHover = isFoundersPit ? '#5E0C9F' : '#04a0c7';
 
@@ -20,6 +21,7 @@ export default function Navbar() {
 		{ label: 'Home', href: '/', icon: FiHome },
 		{ label: 'Team', href: '/team', icon: FiUsers },
 		{ label: 'Events', href: '/events', icon: FiCalendar },
+		{ label: 'Live', href: '/live', icon: FiRadio },
 		{ label: 'About', href: '/about', icon: FiInfo },
 	];
 
@@ -73,6 +75,10 @@ export default function Navbar() {
 
 					{/* Right Section Buttons */}
 					<div className="flex items-center gap-2 z-10">
+						<Link to="/founders-pit" className="mx-2">
+							<FoundersPitButton />
+						</Link>
+
 						<Button
 							size="sm"
 							className="text-white transition-colors duration-300"
