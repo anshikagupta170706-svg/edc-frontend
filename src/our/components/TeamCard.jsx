@@ -90,13 +90,12 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year,
     // ──────────────────────────────────────────────────────
     // OUTER CARD WRAPPER
     // perspective property 3D effect ke liye zaroori hai
-    // aspect-ratio se card ka height auto adjust hota hai
-    // w-full lets it fill the grid column completely
-    // (No max-width — grid columns decide actual size)
+    // aspect-ratio 1 / 1.35 — photo (square = 1.0) + info section
+    // ka tight space (~0.35) = no extra empty space jaisa mockup me hai
     // ──────────────────────────────────────────────────────
     <div
       className="w-full [perspective:1200px] group"
-      style={{ aspectRatio: '1 / 1.55' }}
+      style={{ aspectRatio: '1 / 1.35' }}
     >
       {/* ────────────────────────────────────────────────
           INNER CARD — yeh actually flip hota hai
@@ -138,8 +137,10 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year,
             </div>
           </div>
 
-          {/* INFO SECTION — name, role, socials, flip arrow */}
-          <div className="flex-1 flex flex-col p-3.5 sm:p-4">
+          {/* INFO SECTION — name, role, socials, flip arrow
+              tightly stacked (no mt-auto) so content sits compactly
+              like the mockup — koi empty gap nahi name aur socials ke beech */}
+          <div className="flex flex-col p-3.5 sm:p-4">
             {/* Name */}
             <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-tight">
               {name}
@@ -152,8 +153,10 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year,
             {/* Thin divider line */}
             <div className="h-px bg-white/10 my-3" />
 
-            {/* Footer: socials on left, flip arrow on right */}
-            <div className="flex items-center justify-between mt-auto">
+            {/* Footer: socials on left, flip arrow on right
+                NO mt-auto — taaki socials seedhe divider ke neeche aaye,
+                khali jagah na bane */}
+            <div className="flex items-center justify-between">
               {/* ────────────────────────────────────────────────
                   SOCIAL ICONS — LinkedIn, GitHub, Instagram
                   Order: LinkedIn first, then GitHub, then Instagram
