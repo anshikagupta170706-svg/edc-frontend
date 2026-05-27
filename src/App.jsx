@@ -7,6 +7,7 @@ import Main from './our/views/Main';
 import Events from './our/views/Events';
 import EventDetail from './our/views/EventDetail';
 import FoundersPit from './our/views/FoundersPit';
+import FP_EventFlow from './our/views/FP_EventFlow';
 import About from './our/views/About';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
           <Route path="/founders-pit" element={<FoundersPit />} />
+          <Route path="/founders-pit-event" element={<FP_EventFlow />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
@@ -33,4 +35,3 @@ function App() {
 }
 
 export default App;
-
