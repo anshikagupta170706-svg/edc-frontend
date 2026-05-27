@@ -11,7 +11,7 @@ import { FiArrowUpRight, FiArrowLeft } from 'react-icons/fi';
 // ============================================================
 // Yeh card 2 sides ka hota hai:
 //   FRONT: Photo + name + role + social icons + arrow (flip trigger)
-//   BACK:  Mini photo + name + event tag + quote + return arrow
+//   BACK:  Mini photo + name + branch tag + quote + return arrow
 //
 // Props (Team.jsx se aate hain):
 //   - name:       Member ka naam
@@ -22,8 +22,10 @@ import { FiArrowUpRight, FiArrowLeft } from 'react-icons/fi';
 //   - instagram:  Instagram URL (optional)
 //   - quote:      Quote text jo back face pe dikhega
 //   - year:       1 (1st year/Associate) ya 2 (2nd year/Executive)
+//   - branch:     Branch like 'CSE', 'CSE-DS', 'IT', 'ECE' etc.
+//                 Card pe display hota hai. 'BRANCH_TBD' = placeholder
 // ============================================================
-const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year }) => {
+const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year, branch }) => {
   // ──────────────────────────────────────────────────────
   // STATE: flip karne ke liye boolean
   // true = back side dikh rahi hai, false = front side
@@ -78,9 +80,11 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year 
   const roleTag = getRoleTag();
 
   // ──────────────────────────────────────────────────────
-  // Year tag — '27 for 2nd year (graduates 2027), '28 for 1st year
+  // Branch tag — XLSX se aaya branch dikhao (CSE, CSE-DS, IT, etc.)
+  // Agar 'BRANCH_TBD' hai to clearly visible placeholder dikhao
+  // taaki user ko pata chale kaha edit karna hai
   // ──────────────────────────────────────────────────────
-  const yearLabel = year === 2 ? "'27" : "'28";
+  const branchLabel = branch && branch !== 'BRANCH_TBD' ? branch : 'TBD';
 
   return (
     // ──────────────────────────────────────────────────────
@@ -128,9 +132,9 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year 
               {roleTag.label}
             </div>
 
-            {/* Year tag — bottom-right corner */}
+            {/* Branch tag — bottom-right corner */}
             <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-semibold font-mono bg-black/60 backdrop-blur-md text-white/85">
-              {yearLabel}
+              {branchLabel}
             </div>
           </div>
 
@@ -151,36 +155,14 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year 
             {/* Footer: socials on left, flip arrow on right */}
             <div className="flex items-center justify-between mt-auto">
               {/* ────────────────────────────────────────────────
-                  SOCIAL ICONS — Instagram, LinkedIn, GitHub
+                  SOCIAL ICONS — LinkedIn, GitHub, Instagram
+                  Order: LinkedIn first, then GitHub, then Instagram
                   Teeno HAMESHA dikhte hain (consistency ke liye).
                   Agar link nahi hai to icon disabled/faded dikhega
                   aur click karne pe kuch nahi hoga.
                   ──────────────────────────────────────────────── */}
               <div className="flex gap-1.5">
-                {/* Instagram */}
-                {instagram ? (
-                  <a
-                    href={instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="w-7 h-7 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-white/65 hover:bg-[#05B1DE] hover:text-black hover:border-[#05B1DE] transition-all"
-                    aria-label="Instagram"
-                  >
-                    <IoLogoInstagram size={13} />
-                  </a>
-                ) : (
-                  // Disabled state — faded, cursor-not-allowed, no hover effect
-                  <span
-                    className="w-7 h-7 rounded-md bg-white/[0.02] border border-white/5 flex items-center justify-center text-white/20 cursor-not-allowed"
-                    aria-label="Instagram (not available)"
-                    title="Not available"
-                  >
-                    <IoLogoInstagram size={13} />
-                  </span>
-                )}
-
-                {/* LinkedIn */}
+                {/* 1. LinkedIn */}
                 {linkedin ? (
                   <a
                     href={linkedin}
@@ -202,7 +184,7 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year 
                   </span>
                 )}
 
-                {/* GitHub */}
+                {/* 2. GitHub */}
                 {github ? (
                   <a
                     href={github}
@@ -221,6 +203,28 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year 
                     title="Not available"
                   >
                     <IoLogoGithub size={13} />
+                  </span>
+                )}
+
+                {/* 3. Instagram */}
+                {instagram ? (
+                  <a
+                    href={instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-7 h-7 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-white/65 hover:bg-[#05B1DE] hover:text-black hover:border-[#05B1DE] transition-all"
+                    aria-label="Instagram"
+                  >
+                    <IoLogoInstagram size={13} />
+                  </a>
+                ) : (
+                  <span
+                    className="w-7 h-7 rounded-md bg-white/[0.02] border border-white/5 flex items-center justify-center text-white/20 cursor-not-allowed"
+                    aria-label="Instagram (not available)"
+                    title="Not available"
+                  >
+                    <IoLogoInstagram size={13} />
                   </span>
                 )}
               </div>
@@ -283,31 +287,62 @@ const TeamCard = ({ name, role, image, linkedin, github, instagram, quote, year 
               </div>
               <div className="flex items-center gap-1.5 mt-0.5 text-[9.5px] text-[#05B1DE] font-mono uppercase tracking-widest font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#05B1DE] shadow-[0_0_6px_#05B1DE] flex-shrink-0" />
-                <span className="truncate">EDC Member · {year === 2 ? '2nd Year' : '1st Year'}</span>
+                <span className="truncate">EDC Member · {branchLabel}</span>
               </div>
             </div>
           </div>
 
-          {/* Back BODY — quote text with decorative quote mark */}
-          <div className="relative z-10 flex-1 flex flex-col px-4 py-4 min-h-0">
-            {/* Decorative quote mark — subtle, large */}
+          {/* Back BODY — quote text with decorative quote mark
+              SCROLLABLE: agar quote lambi hai to user scroll kar sake.
+              Tight spacing: quote mark turant quote ke upar dikhta hai */}
+          <div className="relative z-10 flex-1 flex flex-col px-4 pt-3 pb-4 min-h-0">
+            {/* Decorative quote mark — TIGHT gap rakha quote ke saath
+                container height 16px set kar di hai taaki quote text usse
+                bilkul lagke shuru ho (jaisa mockup me tha) */}
             <div
-              className="text-[#05B1DE]/35 font-bold leading-none select-none mb-1"
-              style={{ fontSize: '52px', height: '20px' }}
+              className="text-[#05B1DE]/35 font-bold select-none flex items-start"
+              style={{
+                fontSize: '32px',
+                lineHeight: '1',
+                height: '16px',
+                marginLeft: '-1px',
+                overflow: 'hidden',
+              }}
             >
               &ldquo;
             </div>
-            {/* Actual quote — clamped to 6 lines so overflow shows ellipsis */}
-            <p
-              className="text-[13px] leading-[1.55] text-white italic font-normal flex-1 overflow-hidden"
+            {/* Actual quote — scrollable agar lambi hai (no truncation now)
+                custom scrollbar styling: Firefox uses scrollbar-color/width inline,
+                WebKit (Chrome/Safari) uses the class below.
+                marginTop 8px se quote mark se thoda neeche start hota hai */}
+            <div
+              className="quote-scroll flex-1 overflow-y-auto pr-1"
               style={{
-                display: '-webkit-box',
-                WebkitLineClamp: 6,
-                WebkitBoxOrient: 'vertical',
+                marginTop: '8px',
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(5, 177, 222, 0.3) transparent',
               }}
             >
-              {quote}
-            </p>
+              <p className="text-[13px] leading-[1.55] text-white italic font-normal">
+                {quote}
+              </p>
+            </div>
+            {/* Scoped WebKit scrollbar styling (Chrome, Safari, Edge) */}
+            <style>{`
+              .quote-scroll::-webkit-scrollbar {
+                width: 4px;
+              }
+              .quote-scroll::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              .quote-scroll::-webkit-scrollbar-thumb {
+                background-color: rgba(5, 177, 222, 0.3);
+                border-radius: 4px;
+              }
+              .quote-scroll::-webkit-scrollbar-thumb:hover {
+                background-color: rgba(5, 177, 222, 0.5);
+              }
+            `}</style>
           </div>
 
           {/* Back FOOTER — label + return arrow */}

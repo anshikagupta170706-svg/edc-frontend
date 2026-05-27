@@ -175,6 +175,7 @@ const Team = () => {
                   instagram={m.instagram}
                   quote={m.quote}
                   year={m.year}
+                  branch={m.branch}
                 />
               ))}
             </div>
@@ -209,6 +210,7 @@ const Team = () => {
                   instagram={m.instagram}
                   quote={m.quote}
                   year={m.year}
+                  branch={m.branch}
                 />
               ))}
             </div>
