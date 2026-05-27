@@ -525,50 +525,6 @@ const FoundersPit = () => {
           </div>
         </section>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                {
-                  title: 'Prize Pool',
-                  desc: 'Compete for a major cash prize across top-performing teams.',
-                  icon: Trophy,
-                  highlight: true,
-                },
-                {
-                  title: 'Certificates',
-                  desc: 'Get official participation and merit certificates to strengthen your profile.',
-                  icon: CheckCircle2,
-                },
-                {
-                  title: 'Trophies',
-                  desc: 'Winners and standout teams will receive trophies for their exceptional performance.',
-                  icon: Medal,
-                },
-                {
-                  title: 'Many More Goodies',
-                  desc: 'Exclusive goodies and surprise rewards await teams that rise through the rounds.',
-                  icon: Gift,
-                },
-              ].map((reward, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    'fp-card p-6 rounded-3xl border border-[#7B2FBE]/30 hover:border-[#D776FF]/60',
-                    reward.highlight && 'bg-[#1A0030]/85 border-[#D776FF]/55 shadow-[0_0_30px_rgba(215,118,255,0.2)]'
-                  )}
-                >
-                  <div className="size-12 rounded-xl bg-[#1B002B] border border-[#7B2FBE]/40 flex items-center justify-center mb-4">
-                    <reward.icon className="size-6 text-[#D776FF]" />
-                  </div>
-                  <h3 className={cn('font-black text-white mb-2', reward.highlight ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl')}>
-                    {reward.title}
-                  </h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{reward.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* 10, 11, 14. DYNAMIC STATE PORTAL (REGISTRATION / SUBMISSION) ══════════ */}
         <section id="registration-portal" className="py-20 px-4 sm:px-6 relative">
           <div className="max-w-3xl mx-auto">
