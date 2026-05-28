@@ -34,36 +34,21 @@ const Team = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const filter = searchParams.get('filter');
-    if (filter) {
-      setActiveFilter(filter);
-    }
+    if (filter) setActiveFilter(filter);
   }, [location.search]);
-
-  // ──────────────────────────────────────────────────────
-  // FACULTY COORDINATORS — separate data because format alag hai
-  // (no quote, no year, special card style)
-  // ──────────────────────────────────────────────────────
-  const facultyCoordinators = [
-    {
-      name: 'Dr. Nishi Sharma',
-      role: 'Faculty Coordinator',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1760033447/1747474363758_srqubg.jpg',
-      linkedin: 'https://www.linkedin.com/in/dr-nishi-sharma-8aab36159/',
-    },
-    {
-      name: 'Dr. Ashima Shrivastava',
-      role: 'Faculty Coordinator',
-      image:
-        'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1760033446/1655353630059_aovzf3.jpg',
-      linkedin: 'https://www.linkedin.com/in/dr-ashima-srivastava-215295135/',
-    },
+  const filters = [
+    { label: 'All', value: 'All' },
+    { label: 'Faculty', value: 'Faculty Coordinators' },
+    { label: 'Core Team', value: 'Core Team' },
+    { label: 'Technical Team', value: 'Technical Team' },
+    { label: 'Outreach Team', value: 'Outreach Team' },
+    { label: 'Design Team', value: 'Design Team' },
+    { label: 'Content & Docs', value: 'Content and Documentation Team' },
+    { label: 'Liaisoning Team', value: 'Liaisoning Team' },
+    { label: 'Marketing Team', value: 'Marketing Team' },
+    { label: 'Events & Training', value: 'Events and Training Team' },
+    { label: 'Media & Networking', value: 'Media and Networking Team' },
   ];
-
-  // ──────────────────────────────────────────────────────
-  // DEPARTMENTS — list with display labels and internal values
-  // Order matters — yeh sequence me sections render hote hain
-  // ──────────────────────────────────────────────────────
   const departments = [
     { label: 'Core Team', value: 'Core Team' },
     { label: 'Technical Team', value: 'Technical Team' },
@@ -75,15 +60,26 @@ const Team = () => {
     { label: 'Events & Training', value: 'Events and Training Team' },
     { label: 'Media & Networking', value: 'Media and Networking Team' },
   ];
-
-  // ──────────────────────────────────────────────────────
-  // Filter chips ka final list (All + Faculty + departments)
-  // ──────────────────────────────────────────────────────
-  const filters = [
-    { label: 'All', value: 'All' },
-    { label: 'Faculty', value: 'Faculty Coordinators' },
-    ...departments,
+  const facultyCoordinators = [
+    {
+      name: 'Dr. Nishi Sharma',
+      role: 'Faculty Coordinator',
+      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1760033447/1747474363758_srqubg.jpg',
+      instagram: '',
+      linkedin: 'https://www.linkedin.com/in/dr-nishi-sharma-8aab36159/',
+    },
+    {
+      name: 'Dr. Ashima Shrivastava',
+      role: 'Faculty Coordinator',
+      image: 'https://res.cloudinary.com/dh8cqlngr/image/upload/ar_4:5,c_fill,g_face/v1760033446/1655353630059_aovzf3.jpg',
+      instagram: '',
+      linkedin: 'https://www.linkedin.com/in/dr-ashima-srivastava-215295135/',
+    },
   ];
+
+  
+
+  const isLead = member => member.role.toLowerCase().includes('head');
 
   // ──────────────────────────────────────────────────────
   // Filter logic — active filter ke according members dikhao

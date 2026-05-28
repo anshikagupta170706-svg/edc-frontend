@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useScroll } from '@/components/use-scroll';
 import Logo from './Logo';
-import FoundersPitButton from './FoundersPitButton';
 
 // Icons
 import { FiHome, FiUsers, FiCalendar, FiInfo, FiRadio } from 'react-icons/fi';
@@ -21,7 +20,6 @@ export default function Navbar() {
 		{ label: 'Home', href: '/', icon: FiHome },
 		{ label: 'Team', href: '/team', icon: FiUsers },
 		{ label: 'Events', href: '/events', icon: FiCalendar },
-		{ label: 'Live', href: '/founders-pit/live', icon: FiRadio },
 		{ label: 'About', href: '/about', icon: FiInfo },
 	];
 
@@ -75,10 +73,6 @@ export default function Navbar() {
 
 					{/* Right Section Buttons */}
 					<div className="flex items-center gap-2 z-10">
-						<Link to="/founders-pit" className="mx-2">
-							<FoundersPitButton />
-						</Link>
-
 						<Button
 							size="sm"
 							className="text-white transition-colors duration-300"
