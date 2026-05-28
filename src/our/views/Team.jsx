@@ -43,20 +43,22 @@ const Team = () => {
     { label: 'Technical Team', value: 'Technical Team' },
     { label: 'Outreach Team', value: 'Outreach Team' },
     { label: 'Design Team', value: 'Design Team' },
-    { label: 'Content & Docs', value: 'Content & Documentation Team' },
+    { label: 'Content & Docs', value: 'Content and Documentation Team' },
     { label: 'Liaisoning Team', value: 'Liaisoning Team' },
     { label: 'Marketing Team', value: 'Marketing Team' },
-    { label: 'Events & Training', value: 'Training & Event' },
+    { label: 'Events & Training', value: 'Events and Training Team' },
+    { label: 'Media & Networking', value: 'Media and Networking Team' },
   ];
   const departments = [
     { label: 'Core Team', value: 'Core Team' },
     { label: 'Technical Team', value: 'Technical Team' },
     { label: 'Outreach Team', value: 'Outreach Team' },
     { label: 'Design Team', value: 'Design Team' },
-    { label: 'Content & Docs', value: 'Content & Documentation Team' },
+    { label: 'Content & Docs', value: 'Content and Documentation Team' },
     { label: 'Liaisoning Team', value: 'Liaisoning Team' },
     { label: 'Marketing Team', value: 'Marketing Team' },
-    { label: 'Events & Training', value: 'Training & Event' },
+    { label: 'Events & Training', value: 'Events and Training Team' },
+    { label: 'Media & Networking', value: 'Media and Networking Team' },
   ];
   const facultyCoordinators = [
     {
