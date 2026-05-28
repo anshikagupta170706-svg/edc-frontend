@@ -162,8 +162,9 @@ const Team = () => {
             {/* Cards grid — HEADS me bigger cards
                 FIXED columns: mobile=2, tablet=3, desktop=3
                 Cards apne grid cell ko fully fill karte hain (no max-width)
-                Future me aur heads add hone pe naturally arrange ho jayenge */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 md:gap-7 px-3 sm:px-4 md:px-6">
+                Future me aur heads add hone pe naturally arrange ho jayenge
+                Gap small rakha hai (mockup jaisa compact look) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-3.5 md:gap-4 px-3 sm:px-4 md:px-6">
               {heads.map((m, i) => (
                 <TeamCard
                   key={`${deptValue}-head-${i}`}
@@ -197,8 +198,9 @@ const Team = () => {
             {/* Cards grid — MEMBERS
                 FIXED columns: mobile=2, tablet=3, desktop=4
                 Cards fully fill their grid cell (no max-width)
-                Future me aur members add hone pe naturally arrange ho jayenge */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7 px-3 sm:px-4 md:px-6">
+                Future me aur members add hone pe naturally arrange ho jayenge
+                Gap small rakha hai (mockup jaisa compact look) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-3.5 md:gap-4 px-3 sm:px-4 md:px-6">
               {members.map((m, i) => (
                 <TeamCard
                   key={`${deptValue}-member-${i}`}
@@ -344,13 +346,14 @@ const Team = () => {
 
       {/* ════════ FILTER CHIPS BAR ════════ */}
       {/* Sticky — scroll karne pe top pe rahega.
-          top value navbar ke height ke according hai */}
+          Chips center-aligned hain aur wrap hote hain (flex-wrap +
+          justify-center) taaki saare screens pe balanced dikhe.
+          Mobile pe bhi wrap, koi chip chhupega nahi, koi awkward
+          single-chip-line nahi banegi kyunki center pe distribute hota hai. */}
       <div className="sticky top-0 md:top-20 z-30 bg-black/85 backdrop-blur-xl border-y border-white/10">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3.5 flex items-center gap-2 overflow-x-auto"
-          style={{ scrollbarWidth: 'none' }}
-        >
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3.5 flex flex-wrap items-center justify-center gap-2">
           {/* "Jump to" label */}
-          <span className="text-[10px] text-white/45 font-bold uppercase tracking-widest whitespace-nowrap pr-3 border-r border-white/10 mr-1 hidden sm:inline-block">
+          <span className="text-[10px] text-white/45 font-bold uppercase tracking-widest whitespace-nowrap pr-3 border-r border-white/10 mr-1 hidden md:inline-block">
             Jump to
           </span>
           {/* Filter chips */}
@@ -358,7 +361,7 @@ const Team = () => {
             <button
               key={value}
               onClick={() => setActiveFilter(value)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold whitespace-nowrap transition-all border ${
                 activeFilter === value
                   ? 'bg-[#05B1DE] border-[#05B1DE] text-black shadow-[0_0_20px_rgba(5,177,222,0.3)]'
                   : 'bg-transparent border-white/15 text-white/70 hover:border-white/40 hover:text-white hover:bg-white/5'
@@ -398,7 +401,7 @@ const Team = () => {
                 <div className="text-[10px] text-white/45 uppercase tracking-widest font-semibold mt-2">Mentors</div>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-7 px-3 sm:px-4 md:px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-3.5 md:gap-4 px-3 sm:px-4 md:px-6">
               {facultyCoordinators.map((f, i) => (
                 <FacultyCard key={i} {...f} />
               ))}
