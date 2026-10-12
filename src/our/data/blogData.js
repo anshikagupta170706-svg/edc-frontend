@@ -3,9 +3,10 @@
 // Static content for the EDC JSSUN blog (NEC Weekly Blog task). Text is taken
 // verbatim from the NEC handoff PDF.
 //
-// ADDING A POST (parts 4 and 5): append an object with the same shape to
-// `blogPosts` below. The index page, the post page and the Previous / Next
-// links are all driven by this array, so no other file needs to change.
+// ADDING A POST: append an object with the same shape to `blogPosts` below.
+// The index page, the post page and the Previous / Next links are all driven
+// by this array, so no other file needs to change. `closing` is an optional
+// list of paragraphs shown after the weekly challenge (use [] if none).
 //
 // DATES (important):
 //   - `editionLabel` / `editionDate` are the series edition the article belongs
@@ -14,7 +15,7 @@
 //     Set it to the real deploy date. Do not backdate it.
 
 // Actual first-publication date on the website (YYYY-MM-DD).
-export const PUBLISHED_ON = '2026-10-11';
+export const PUBLISHED_ON = '2026-10-12';
 
 export const blogPosts = [
   {
@@ -58,6 +59,7 @@ export const blogPosts = [
         ],
       },
     ],
+    closing: [],
   },
   {
     slug: 'replace-assumptions-with-conversations',
@@ -100,6 +102,7 @@ export const blogPosts = [
         ],
       },
     ],
+    closing: [],
   },
   {
     slug: 'build-the-smallest-useful-experiment',
@@ -143,6 +146,96 @@ export const blogPosts = [
         ],
       },
     ],
+    closing: [],
+  },
+  {
+    slug: 'make-the-numbers-and-the-team-work',
+    part: 4,
+    totalParts: 5,
+    eyebrow: 'FROM CAMPUS PROBLEM TO FIRST VENTURE / PART 4 OF 5',
+    title: 'Make the Numbers and the Team Work',
+    author: 'EDC JSSUN',
+    editionLabel: '7 October 2026',
+    publishedOn: PUBLISHED_ON,
+    editionDate: '2026-10-07',
+    intro: [
+      'A successful handover is encouraging. A service that can repeat that handover without exhausting its team is a stronger foundation for a venture. In the previous edition, we designed a small experiment for a hypothetical campus textbook exchange. Now we need to ask two practical questions: What does each exchange cost, and who is responsible for making it happen?',
+    ],
+    sections: [
+      {
+        heading: 'Separate money collected from money earned',
+        paragraphs: [
+          "Suppose a seller receives Rs. 300 for a book and the service charges a separate Rs. 20 coordination fee. In this simplified example, the service earns Rs. 20 per completed exchange. Money passed through to the seller is not the service's own fee revenue. This distinction matters because a busy operation can appear larger than the income it actually keeps.",
+          'Assume that each exchange involves Rs. 8 of direct variable costs. The remaining Rs. 12 is contribution towards fixed costs and, eventually, profit. If fixed pilot expenses are Rs. 600, the service would need 50 completed exchanges to cover those expenses at that contribution: 600 divided by 12. These invented figures illustrate the calculation; they are not EDC JSSUN results or a recommended price.',
+        ],
+      },
+      {
+        heading: 'Count effort as well as cash',
+        paragraphs: [
+          'The example excludes founder pay and other possible costs. Record time spent checking listings, answering messages, handling cancellations and resolving complaints. If each handover needs an hour of coordination, volunteer effort can hide a serious operating problem. Test whether clearer information or a better handover process reduces that workload before assuming the model can expand.',
+          'Timing also matters. An expense paid today may come before fees collected next week. Keep a simple dated cash record with opening balance, receipts, payments and closing balance. Record refunds when they happen. Any change to pricing should be explained before participation, and willingness to use a free pilot should not be treated as proof that users will accept a fee.',
+        ],
+      },
+      {
+        heading: 'Give each task an owner',
+        paragraphs: [
+          'A small student team might divide responsibilities among user conversations, listing checks, matching and record-keeping. Assign one accountable person and a backup for each essential task. Agree on response times that fit around classes and examinations. A shared status list helps the next person see whether a request is new, matched, completed or unresolved.',
+          'Hold a brief weekly review around three questions: What did users struggle with? What did it cost us to deliver? What will we change next? Discuss mistakes without hiding them. Reliability comes from noticing repeated problems and improving the process, not from expecting one enthusiastic teammate to solve every issue.',
+        ],
+      },
+      {
+        heading: "This week's challenge",
+        paragraphs: [
+          'Create a one-page operating sheet containing the fee, variable cost, fixed expenses, cash balance and owners of recurring tasks. Identify the assumption most likely to make the service unsustainable. Next week, we will turn honest evidence about users and operations into a clear story for the wider campus.',
+        ],
+      },
+    ],
+    closing: [],
+  },
+  {
+    slug: 'earn-trust-measure-progress-tell-the-story',
+    part: 5,
+    totalParts: 5,
+    eyebrow: 'FROM CAMPUS PROBLEM TO FIRST VENTURE / PART 5 OF 5',
+    title: 'Earn Trust, Measure Progress, Tell the Story',
+    author: 'EDC JSSUN',
+    editionLabel: '14 October 2026',
+    publishedOn: PUBLISHED_ON,
+    editionDate: '2026-10-14',
+    intro: [
+      "A venture's first audience is often small: a few classmates, a handful of users and someone willing to give advice. That is enough to begin learning, but a good idea still needs a clear explanation if more people are to try it. Our final weekly edition brings together the series' five steps: understand a problem, listen to users, test a solution, check operations and communicate what the evidence supports.",
+    ],
+    sections: [
+      {
+        heading: 'Make one clear promise',
+        paragraphs: [
+          'For the hypothetical textbook exchange, "a revolutionary student ecosystem" says very little about the actual service. "Find an available copy of the textbook you need and arrange a campus handover" gives readers a concrete reason to pay attention. State who the service helps, what it currently offers and how someone can take the next step. Avoid promising instant matches if availability is limited.',
+          "Reach people where the need arises. With the relevant permission, a course group or a campus notice may be more useful for an early trial than a broad promotional campaign. Use a specific invitation and explain any fees or limits. If you share a testimonial, obtain permission and preserve the meaning of the person's feedback. Trust is easier to maintain when the offer and the experience agree.",
+        ],
+      },
+      {
+        heading: 'Measure the journey after the click',
+        paragraphs: [
+          'Page views can show that a message attracted attention. They cannot establish that the service solved a problem. Track the path from relevant visits to valid requests, suitable matches and completed exchanges. For a textbook service, repeat use may follow semester cycles, so a lack of immediate repeat purchases needs context. Also monitor cancellations, unresolved complaints and time spent per exchange.',
+          'Report counts alongside percentages. In an illustrative pilot, three completed exchanges from ten valid requests would be a 30% completion rate. That is a description of a very small trial, not proof of campus-wide demand. Explain the trial period, the audience and the remaining uncertainty. Honest limits make feedback more useful because a mentor can see which question needs attention next.',
+        ],
+      },
+      {
+        heading: 'Build a pitch around evidence',
+        paragraphs: [
+          'A short pitch can follow five points: the user and problem, the current workaround, the proposed solution, the evidence so far and the next test. End with a specific request, such as introductions to a relevant user group or feedback on the handover process. If the venture is still an idea, say so. Planned interviews and projected sales belong under next steps, not achievements.',
+        ],
+      },
+      {
+        heading: "This week's challenge",
+        paragraphs: [
+          'Prepare a one-minute explanation and a one-page learning summary. Include one thing that worked, one thing that did not and one decision changed by evidence. Choose whether to continue, narrow the audience, alter the offer or stop the experiment. Every option can be reasonable if the decision follows what you learned.',
+        ],
+      },
+    ],
+    closing: [
+      "For students beginning their entrepreneurial journey, progress can be modest and concrete: a better question, a clearer promise or a process that saves someone time. EDC JSSUN's weekly series ends with an invitation to take that first measurable step. Choose one problem around you, speak to the people who face it and let their experience shape what you build.",
+    ],
   },
 ];
 
@@ -169,6 +262,7 @@ export const getReadingMinutes = post => {
   const words = [
     ...post.intro,
     ...post.sections.flatMap(s => [s.heading, ...s.paragraphs]),
+    ...(post.closing || []),
   ]
     .join(' ')
     .split(/\s+/).length;

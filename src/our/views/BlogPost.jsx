@@ -226,6 +226,20 @@ const BlogPost = () => {
                 </motion.section>
               );
             })}
+
+            {/* ────────── Closing note (optional) ────────── */}
+            {post.closing && post.closing.length > 0 && (
+              <div className="mb-12 space-y-5">
+                {post.closing.map((text, i) => (
+                  <p
+                    key={i}
+                    className="text-gray-300 text-base sm:text-lg leading-relaxed"
+                  >
+                    {text}
+                  </p>
+                ))}
+              </div>
+            )}
           </article>
 
           {/* ────────── Previous / Next ────────── */}
